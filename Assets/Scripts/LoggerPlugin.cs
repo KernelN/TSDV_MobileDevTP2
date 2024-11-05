@@ -1,9 +1,9 @@
-using System;
 using UnityEngine;
+using Universal.Singletons;
 
-namespace NAMESPACENAME
+namespace TheWasteland.Plugins
 {
-    public class PluginLoader : MonoBehaviour
+    public class LoggerPlugin : MonoBehaviourSingleton<LoggerPlugin>
     {
         //Plugin:
         //Con un boton muestra los logs
@@ -63,6 +63,12 @@ namespace NAMESPACENAME
         {
 #if UNITY_ANDROID || PLATFORM_ANDROID
             pluginInst.Call("SaveLogs");
+#endif
+        }
+        public void ReadLogs()
+        {
+#if UNITY_ANDROID || PLATFORM_ANDROID
+            pluginInst.Call("ReadLogs");
 #endif
         }
         public void ClearLogs()
