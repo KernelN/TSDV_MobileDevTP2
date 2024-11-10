@@ -1,6 +1,5 @@
 using UnityEngine;
 using GooglePlayGames;
-using TheWasteland.Plugins;
 using Universal.Singletons;
 
 namespace TheWasteland.SocialNet
@@ -11,13 +10,11 @@ namespace TheWasteland.SocialNet
 #if UNITY_ANDROID || PLATFORM_ANDROID
         public static PlayGamesPlatform platform = null;
 #endif
-
+        
+        //Unity Events
         void Start()
         {
-            LoggerPlugin.inst.RegisterLog("Entered game socials");
 #if UNITY_ANDROID || PLATFORM_ANDROID
-            LoggerPlugin.inst.RegisterLog("Entered android preprocess if");
-            LoggerPlugin.inst.RegisterLog("Has Platform 1: " + (platform == null ? "No" : "Yes"));
             if (platform == null)
             {
                 // //NOT SUPPORTED ANYMORE
@@ -25,33 +22,34 @@ namespace TheWasteland.SocialNet
                 // PlayGamesPlatform.InitializeInstance(config);
                 PlayGamesPlatform.DebugLogEnabled = true;
                 platform = PlayGamesPlatform.Activate();
-                LoggerPlugin.inst.RegisterLog("GPGS - Play Games activated successfully");
+                Debug.Log("GPGS - Play Games activated successfully");
             }
-            LoggerPlugin.inst.RegisterLog("Has Platform 2: " + (platform == null ? "No" : "Yes"));
+            else 
+                Debug.Log("GPGS - Play Games activation failed");
 #endif
-
-            Social.localUser.Authenticate(success =>
-            {
-                if (success)
-                {
-                    LoggerPlugin.inst.RegisterLog("GameSocials - Logged in successfully");
-                    LoggerPlugin.inst.RegisterLog("GameSocials - ID: " + Social.localUser.id);
-                    LoggerPlugin.inst.RegisterLog("GameSocials - Name: " + Social.localUser.userName);
-                }
-                else
-                {
-                    LoggerPlugin.inst.RegisterLog("GameSocials - Failed to login");
-                }
-            });
+            
+            LogIn();
             
             UnlockAchievement(GPGSIds.achievement_game_started);
         }
 
+        //Methods
+        public void LogIn(bool logInFromPlatform = false)
+        {
+            if (logInFromPlatform)
+            {
+#if UNITY_ANDROID || PLATFORM_ANDROID
+                platform.Authenticate(OnGoogleLogIn);
+#endif
+            }
+            else
+                Social.localUser.Authenticate(OnUnityLogIn);
+        }
         public void AddScoreToLeaderboard(int score)
         {
             if (score % 5 != 0)
             {
-                LoggerPlugin.inst.RegisterLog("GameSocials ERROR - Score must be a multiple of 5");
+                Debug.Log("GameSocials ERROR - Score must be a multiple of 5");
                 return;
             }
             if (Social.localUser.authenticated)
@@ -59,7 +57,6 @@ namespace TheWasteland.SocialNet
                 Social.ReportScore(score, leaderboardID, success => { });
             }
         }
-
         public void ShowLeaderboard()
         {
             if (Social.localUser.authenticated)
@@ -67,7 +64,6 @@ namespace TheWasteland.SocialNet
                 platform.ShowLeaderboardUI();
             }
         }
-
         public void ShowAchievements()
         {
             if (Social.localUser.authenticated)
@@ -75,12 +71,49 @@ namespace TheWasteland.SocialNet
                 platform.ShowAchievementsUI();
             }
         }
-        public void UnlockAchievement(string id)
+        public void UnlockAchievement(string id, bool unlockFromPlatform = false)
         {
+            if (unlockFromPlatform)
+            {
+#if UNITY_ANDROID || PLATFORM_ANDROID
+                platform.UnlockAchievement(id);
+#endif
+                return;
+            }
+            
             if (Social.localUser.authenticated)
                 Social.ReportProgress(id, 100f, success => { });
             else
-                LoggerPlugin.inst.RegisterLog("GameSocials - Failed to unlock achievement");
+                Debug.Log("GameSocials - Failed to unlock achievement");
+            
         }
+        void OnUnityLogIn(bool success)
+        {
+            if (success)
+            {
+                Debug.Log("GameSocials - Logged in successfully");
+                Debug.Log("GameSocials - ID: " + Social.localUser.id);
+                Debug.Log("GameSocials - Name: " + Social.localUser.userName);
+            }
+            else
+            {
+                Debug.Log("GameSocials - Failed to login");
+            }
+        }
+#if UNITY_ANDROID || PLATFORM_ANDROID
+        void OnGoogleLogIn(GooglePlayGames.BasicApi.SignInStatus signInStatus)
+        {
+            if (signInStatus == GooglePlayGames.BasicApi.SignInStatus.Success)
+            {
+                Debug.Log("GPGS - Logged in successfully");
+                Debug.Log("GPGS - ID: " + platform.localUser.id);
+                Debug.Log("GPGS - Name: " + platform.localUser.userName);
+            }
+            else
+            {
+                Debug.Log("GPGS - Failed to login: " + signInStatus);
+            }
+        }
+#endif
     }
 }

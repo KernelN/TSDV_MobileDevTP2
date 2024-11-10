@@ -13,7 +13,7 @@ namespace Universal.Singletons
             }
             else
             {
-                DestroyImmediate(gameObject);
+                Destroy(gameObject);
             }
         }
         internal virtual void OnDestroy()

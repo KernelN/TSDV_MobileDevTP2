@@ -1,9 +1,8 @@
 using UnityEngine;
-using Universal.Singletons;
 
 namespace TheWasteland.Plugins
 {
-    public class LoggerPlugin : MonoBehaviourSingleton<LoggerPlugin>
+    public class LoggerPlugin : MonoBehaviour
     {
         //Plugin:
         //Con un boton muestra los logs
@@ -23,7 +22,7 @@ namespace TheWasteland.Plugins
 #endif
         
         //Unity Events
-        void Start()
+        void Awake()
         {
             label.text = "Start";
 
@@ -31,21 +30,21 @@ namespace TheWasteland.Plugins
             pluginClass = new AndroidJavaClass(pluginClassName);
             pluginInst = pluginClass.CallStatic<AndroidJavaObject>("getInstance");
 #endif
+            
+            Application.logMessageReceived += HandleUnityLog;
+        }
+        void OnDestroy()
+        {
+            Application.logMessageReceived -= HandleUnityLog;
         }
 
         //Methods
         public void RegisterTimeLog()
         {
             Debug.Log("Unity - Send Log: " + Time.time);
-
-#if UNITY_ANDROID || PLATFORM_ANDROID
-            pluginInst.Call("SendLog", Time.time.ToString());
-#endif
         }
         public void RegisterLog(string log)
         {
-            Debug.Log("Unity - Send Log: " + log);
-
 #if UNITY_ANDROID || PLATFORM_ANDROID
             pluginInst.Call("SendLog", log);
 #endif
@@ -76,6 +75,12 @@ namespace TheWasteland.Plugins
 #if UNITY_ANDROID || PLATFORM_ANDROID
             pluginInst.Call("ClearLogs");
 #endif
+        }
+        
+        //Event Receivers
+        void HandleUnityLog(string logString, string stacktrace, LogType type)
+        {
+            RegisterLog(logString);
         }
     }
 }
