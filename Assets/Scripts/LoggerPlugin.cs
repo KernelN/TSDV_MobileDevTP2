@@ -29,6 +29,12 @@ namespace TheWasteland.Plugins
 #if UNITY_ANDROID || PLATFORM_ANDROID
             pluginClass = new AndroidJavaClass(pluginClassName);
             pluginInst = pluginClass.CallStatic<AndroidJavaObject>("getInstance");
+            
+            AndroidJavaClass unityClass =
+                new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject activity = 
+                unityClass.GetStatic<AndroidJavaObject>("currentActivity");
+            pluginInst.Call("Set", activity);
 #endif
             
             Application.logMessageReceived += HandleUnityLog;
@@ -58,16 +64,11 @@ namespace TheWasteland.Plugins
                 label.text = "Plugin not found";
 #endif
         }
-        public void SaveLogs()
-        {
-#if UNITY_ANDROID || PLATFORM_ANDROID
-            pluginInst.Call("SaveLogs");
-#endif
-        }
         public void ReadLogs()
         {
 #if UNITY_ANDROID || PLATFORM_ANDROID
             pluginInst.Call("ReadLogs");
+            GetLogs();
 #endif
         }
         public void ClearLogs()
