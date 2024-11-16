@@ -8,12 +8,12 @@ namespace TheWasteland.Gameplay.Enemy
         internal Transform target;
         internal float speed;
         
-        protected internal virtual void Set(float speed, Transform transform, Transform target)
+        public virtual void Set(float speed, Transform transform, Transform target)
         {
             this.speed = speed;
             this.transform = transform;
             this.target = target;
         }
-        protected internal abstract void Update();
+        public abstract void Update();
     }
 }

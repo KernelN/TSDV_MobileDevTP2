@@ -11,13 +11,13 @@ namespace TheWasteland.Gameplay.Enemy
         //Unity Events
 
         //Methods
-        protected internal override void Set(float speed, Transform transform, Transform target)
+        public override void Set(float speed, Transform transform, Transform target)
         {
             base.Set(speed, transform, target);
             
             rb = transform.GetComponent<Rigidbody>();
         }
-        protected internal override void Update()
+        public override void Update()
         {
             Vector3 dir = target.position - transform.position;
             dir.y = 0;

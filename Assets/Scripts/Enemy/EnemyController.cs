@@ -2,16 +2,19 @@ using UnityEngine;
 
 namespace TheWasteland.Gameplay.Enemy
 {
-    public abstract class EnemyController : MonoBehaviour
+    public abstract class EnemyController : MonoBehaviour, IHittable
     {
         //[Header("Set Values")]
+        [SerializeField] internal Animator animator;
         //[Header("Runtime Values")]
         ChaseModule chaseModule;
-        Transform target;
-        EnemyDataSO data;
-        float cHealth;
+        internal Transform target;
+        internal EnemyDataSO data;
+        internal float cHealth;
 
         public System.Action Died;
+        
+        internal float SqrAttkRange => data.attackRange * data.attackRange;
 
         //Unity Events
         protected virtual void Update()
@@ -20,7 +23,7 @@ namespace TheWasteland.Gameplay.Enemy
         }
 
         //Methods
-        public void Set(EnemyDataSO data, Transform target, ChaseModule chaseModule)
+        public virtual void Set(EnemyDataSO data, Transform target, ChaseModule chaseModule)
         {
             this.data = data;
             this.target = target;
@@ -28,6 +31,11 @@ namespace TheWasteland.Gameplay.Enemy
             cHealth = data.health;
 
             this.chaseModule = chaseModule;
+        }
+        public void GetHitted(float dmg)
+        {
+            cHealth -= dmg;
+            if (cHealth <= 0) Died?.Invoke();
         }
     }
 }
