@@ -89,6 +89,7 @@ namespace TheWasteland.Gameplay.Enemy
                     respawnTimers.Remove(factories[i].Item2);
                     factories.RemoveAt(i);
                 }
+                if (i >= factories.Count) break;
 
                 
                 //Wait for respawn cooldown
