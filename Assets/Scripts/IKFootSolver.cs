@@ -15,10 +15,11 @@ namespace TheWasteland.Gameplay
         Vector3 oldNormal, currentNormal, newNormal;
         Quaternion originalRot;
         float timer;
+        float extraSpeed = 1;
 
         public bool isMoving { get; private set; }
         
-        float SqrMinDistToMove => minDistToMove * minDistToMove;
+        float SqrMinDistToMove => (minDistToMove/extraSpeed) * (minDistToMove/extraSpeed);
         
         private void Start()
         {
@@ -36,37 +37,19 @@ namespace TheWasteland.Gameplay
 
             if (isMoving)
             {
-                timer += Time.deltaTime;
+                timer += Time.deltaTime * extraSpeed;
                 
                 if (timer >= moveTime)
                 {
                     timer = moveTime;
                     isMoving = false;
                 }
+                else UpdateTargetPos(false); //if it's still moving, update target pos
                 
                 UpdateRig(timer / moveTime);
-                return;
             }
-            
-            if (Physics.Raycast(target.position, Vector3.down, out RaycastHit hit, 10, terrainLayer))
-            {
-                target.position = hit.point + Vector3.up * heightOffset;
-                target.up = originalRot * hit.normal;
-            }
-            
-            if ((target.position - transform.position).sqrMagnitude > SqrMinDistToMove)
-            {
-                timer = 0;
-                isMoving = true;
-                
-                oldPosition = transform.position;
-                oldNormal = transform.up;
-                
-                newPosition = target.position;
-                newNormal = target.up;
-            }
+            else UpdateTargetPos();
         }
-
         void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
@@ -81,10 +64,33 @@ namespace TheWasteland.Gameplay
             if (t < 1) //Update lerp & target pos
             {
                 Vector3 tempPosition = Vector3.Lerp(oldPosition, newPosition, t);
-                tempPosition.y += Mathf.Sin(t * Mathf.PI) * stepHeight;
+                tempPosition.y += Mathf.Sin(t * Mathf.PI) * stepHeight * (extraSpeed/3);
 
                 currentPosition = tempPosition;
                 currentNormal = Vector3.Lerp(oldNormal, newNormal, t);
+            }
+        }
+        public void SetExtraSpeed(float speed) => extraSpeed = speed + 1;
+        void UpdateTargetPos(bool triggerMove = true)
+        {
+            if (Physics.Raycast(target.position, Vector3.down, out RaycastHit hit, 10, terrainLayer))
+            {
+                target.position = hit.point + Vector3.up * heightOffset;
+                target.up = originalRot * hit.normal;
+            }
+            
+            if ((target.position - transform.position).sqrMagnitude > SqrMinDistToMove)
+            {
+                newPosition = target.position;
+                newNormal = target.up;
+                
+                if (!triggerMove) return;
+                
+                timer = 0;
+                isMoving = true;
+                
+                oldPosition = transform.position;
+                oldNormal = transform.up;
             }
         }
     }

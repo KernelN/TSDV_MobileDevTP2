@@ -1,1 +1,90 @@
-{}
+{
+    "name": "Inputs",
+    "maps": [
+        {
+            "name": "MainMap",
+            "id": "f5fbbfe4-a085-4a80-9f7c-847878c5d052",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "1a80633b-d117-425c-8807-04576f6220e7",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bb687dae-9a81-4fc7-8ac5-b00d1734a5cb",
+                    "path": "<Gyroscope>/angularVelocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MobileGyro",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7a99e57c-04f9-4355-9923-cfb17767212c",
+                    "path": "<Accelerometer>/acceleration",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MobileAccel",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9c085856-a6a5-4a15-a249-7517e99a102c",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MobileClear",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "MobileGyro",
+            "bindingGroup": "MobileGyro",
+            "devices": [
+                {
+                    "devicePath": "<Gyroscope>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "MobileAccel",
+            "bindingGroup": "MobileAccel",
+            "devices": [
+                {
+                    "devicePath": "<Accelerometer>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "MobileClear",
+            "bindingGroup": "MobileClear",
+            "devices": [
+                {
+                    "devicePath": "<Joystick>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
