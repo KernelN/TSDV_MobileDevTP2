@@ -1,4 +1,3 @@
-using Terresquall;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Universal.Singletons;
@@ -39,6 +38,7 @@ public class InputManager : MonoBehaviourSingletonInScene<InputManager>
 
         InputAction move = playerInput.actions["Move"];
         move.performed += UpdateInput;
+        move.canceled += UpdateInput;
     }
     void UpdateInput(InputAction.CallbackContext value)
     {
