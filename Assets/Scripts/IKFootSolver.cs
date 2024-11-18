@@ -7,10 +7,19 @@ namespace TheWasteland.Gameplay
         [SerializeField] LayerMask terrainLayer = default;
         [SerializeField] Transform target = default;
         [SerializeField] IKFootSolver oppositeFoot;
+        [Header("Move Length")]
         [SerializeField, Min(0)] float minDistToMove = 1;
+        [Tooltip("distBySpeedMod * (extraSpeed / distBySpeedMod)")]
+        [SerializeField, Min(0)] float distBySpeedMod = 1;
+        [Header("Height")]
         [SerializeField, Min(0)] float stepHeight = 1;
-        [SerializeField, Min(0)] float moveTime;
+        [Tooltip("stepHeight * (extraSpeed / sHeightBySpeedMod)")]
+        [SerializeField, Min(0)] float sHeightBySpeedMod = 2;
         [SerializeField, Min(0)] float heightOffset;
+        [Header("Move Duration")]
+        [SerializeField, Min(0)] float moveTime;
+        [Tooltip("deltaTime * (extraSpeed * timeBySpeedMod)")]
+        [SerializeField, Min(0)] float timeBySpeedMod = 1;
         Vector3 oldPosition, currentPosition, newPosition;
         Vector3 oldNormal, currentNormal, newNormal;
         Quaternion originalRot;
@@ -19,7 +28,10 @@ namespace TheWasteland.Gameplay
 
         public bool isMoving { get; private set; }
         
-        float SqrMinDistToMove => (minDistToMove/extraSpeed) * (minDistToMove/extraSpeed);
+        float SqrMinDistToMove => (FinalDistToMove) * (FinalDistToMove);
+        float FinalStepHeight => stepHeight * (extraSpeed * sHeightBySpeedMod);
+        float FinalMoveTime => moveTime * (extraSpeed * timeBySpeedMod);
+        float FinalDistToMove => minDistToMove/extraSpeed;
         
         private void Start()
         {
@@ -64,7 +76,7 @@ namespace TheWasteland.Gameplay
             if (t < 1) //Update lerp & target pos
             {
                 Vector3 tempPosition = Vector3.Lerp(oldPosition, newPosition, t);
-                tempPosition.y += Mathf.Sin(t * Mathf.PI) * stepHeight * (extraSpeed/3);
+                tempPosition.y += Mathf.Sin(t * Mathf.PI) * FinalStepHeight;
 
                 currentPosition = tempPosition;
                 currentNormal = Vector3.Lerp(oldNormal, newNormal, t);
