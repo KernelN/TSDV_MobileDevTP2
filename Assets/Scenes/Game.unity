@@ -2617,9 +2617,17 @@ PrefabInstance:
       value: InputManager
       objectReference: {fileID: 0}
     - target: {fileID: 5998048265391343397, guid: 3e2d5de3ab1d02e48957edad1c9cad89, type: 3}
+      propertyPath: axis
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998048265391343397, guid: 3e2d5de3ab1d02e48957edad1c9cad89, type: 3}
       propertyPath: Joystick
       value: 
       objectReference: {fileID: 1304955667922309379}
+    - target: {fileID: 5998048265391343397, guid: 3e2d5de3ab1d02e48957edad1c9cad89, type: 3}
+      propertyPath: axisNormalized
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

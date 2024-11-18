@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviourSingletonInScene<InputManager>
     [SerializeField] GameObject Joystick;
     //[Header("Runtime Values")]
     InputType inputType = InputType.Gyro;
+    Vector3 sensorVec = Vector3.zero;
 
     public Vector2 Axis { get; private set; } = Vector2.zero;
     
@@ -45,6 +46,11 @@ public class InputManager : MonoBehaviourSingletonInScene<InputManager>
         if (inputType == InputType.VStick)
             Axis = value.ReadValue<Vector2>();
         else
-            Axis = value.ReadValue<Vector3>();
+        {
+            sensorVec += value.ReadValue<Vector3>();
+            Axis = sensorVec;
+        }
+        
+        Axis = Axis.normalized;
     }
 }

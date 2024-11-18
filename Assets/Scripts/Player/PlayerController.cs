@@ -29,7 +29,6 @@ namespace TheWasteland.Gameplay.Player
             for (int i = 0; i < ikFoots.Length; i++)
                 ikFoots[i].SetExtraSpeed(sqr);
             
-            dir.Normalize();
             Vector3 newVel = new Vector3(dir.x, 0, dir.y) * data.moveSpeed;
             newVel.y = rb.velocity.y;
             rb.velocity = newVel;
