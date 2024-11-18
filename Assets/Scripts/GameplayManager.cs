@@ -12,6 +12,8 @@ namespace TheWasteland.Gameplay
         [SerializeField] PlayerDataSO playerData;
         //[Header("Runtime Values")]
 
+        public System.Action GameOver;
+        
         //Unity Events
         void Awake()
         {
@@ -20,7 +22,11 @@ namespace TheWasteland.Gameplay
             if(!player)
                 player = FindObjectOfType<PlayerController>();
             player.Set(playerData);
-            player.Died += () => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            player.Died += () =>
+            {
+                Time.timeScale = 0;
+                GameOver?.Invoke();
+            };
         }
 
         //Methods
