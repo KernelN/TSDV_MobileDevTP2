@@ -6,16 +6,16 @@ using Accelerometer = UnityEngine.InputSystem.Accelerometer;
 
 public class InputManager : MonoBehaviourSingletonInScene<InputManager>
 {
-    enum InputType { Gyro, Accel, VStick }
+    public enum InputType { Gyro, Accel, VStick }
 
     [Header("Set Values")] 
     [SerializeField] PlayerInput playerInput;
     [SerializeField] GameObject Joystick;
     //[Header("Runtime Values")]
-    InputType inputType = InputType.Gyro;
     Vector3 sensorVec = Vector3.zero;
 
     public Vector2 Axis { get; private set; } = Vector2.zero;
+    public InputType inputType { get; private set; } = InputType.Gyro;
     
     void Start()
     {
@@ -40,6 +40,12 @@ public class InputManager : MonoBehaviourSingletonInScene<InputManager>
         InputAction move = playerInput.actions["Move"];
         move.performed += UpdateInput;
         move.canceled += UpdateInput;
+    }
+
+    public void RecalibrateSensors()
+    {
+        sensorVec = Vector3.zero;
+        Axis = Vector2.zero;
     }
     void UpdateInput(InputAction.CallbackContext value)
     {

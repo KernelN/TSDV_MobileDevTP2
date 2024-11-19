@@ -7,6 +7,7 @@ namespace TheWasteland.Gameplay
     {
         //[Header("Set Values")]
         [SerializeField] GameObject gameOverScreen;
+        [SerializeField] GameObject pauseButton;
         //[Header("Runtime Values")]
         GameplayManager manager;
 
@@ -18,6 +19,7 @@ namespace TheWasteland.Gameplay
             {
                 Time.timeScale = 0;
                 gameOverScreen.SetActive(true);
+                pauseButton.SetActive(false);
             };
         }
 
