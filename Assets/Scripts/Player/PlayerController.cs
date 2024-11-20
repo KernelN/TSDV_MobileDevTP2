@@ -2,6 +2,11 @@ using UnityEngine;
 
 namespace TheWasteland.Gameplay.Player 
 { 
+    //Composite: Ability
+    //Component: Power
+    //Leaf: Buff
+    
+    
     public class PlayerController : MonoBehaviour, IHittable
     {
         [Header("Set Values")]

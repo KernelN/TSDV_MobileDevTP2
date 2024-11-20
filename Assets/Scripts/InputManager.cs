@@ -54,9 +54,7 @@ public class InputManager : MonoBehaviourSingletonInScene<InputManager>
         else
         {
             sensorVec += value.ReadValue<Vector3>();
-            Axis = sensorVec;
+            Axis = Vector2.ClampMagnitude(sensorVec, .75f);
         }
-        
-        Axis = Axis.normalized;
     }
 }
