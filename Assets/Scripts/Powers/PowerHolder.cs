@@ -34,6 +34,9 @@ namespace TheWasteland.Gameplay.Powers
                 case EffectType.Ranged:
                     newPower = new RangedPower();
                     break;
+                case EffectType.Melee:
+                    newPower = new MeleePower();
+                    break;
                 case EffectType.RadialHit: 
                     newPower = new RadialHitPower(wrappee);
                     break;

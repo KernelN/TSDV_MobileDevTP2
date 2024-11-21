@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66809e7a28fe88a488c93105b8a23c25, type: 3}
+  m_Name: LightWaveSO
+  m_EditorClassIdentifier: 
+  castCooldown: 2
+  lifeTime: 0.9
+  prefab: {fileID: 8888427197965140261, guid: d1fa2eccd09c94c4d93987ecc68d74b9, type: 3}
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  detectRange: 0
+  launchOffset: 0
+  stickToCaster: 1

@@ -1786,7 +1786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4809205052158470996, guid: a8f4d4f15ca19d34e96f7127eaba8c7b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -112.34
+      value: -56.17
       objectReference: {fileID: 0}
     - target: {fileID: 4809205052158470996, guid: a8f4d4f15ca19d34e96f7127eaba8c7b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2010,7 +2010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectsInOrder:
-  - {fileID: 11400000, guid: 5d9a82d970aee604fb34b34d65ad512e, type: 2}
+  - {fileID: 11400000, guid: e55f23c0cd7aa4b409804dc3907da0e3, type: 2}
 --- !u!23 &1368004146
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2519,7 +2519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4809205052158470996, guid: a8f4d4f15ca19d34e96f7127eaba8c7b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -187.23334
+      value: -168.51
       objectReference: {fileID: 0}
     - target: {fileID: 4809205052158470996, guid: a8f4d4f15ca19d34e96f7127eaba8c7b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
