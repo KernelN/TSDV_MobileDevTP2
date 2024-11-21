@@ -73,7 +73,7 @@ namespace TheWasteland.Gameplay.Powers
             Collider[] hits;
             hits = Physics.OverlapSphere(pos, data.detectRange, data.targetLayers);
             
-            if(hits == null) return null;
+            if(hits == null || hits.Length == 0) return null;
             
             return hits[0];
         }
