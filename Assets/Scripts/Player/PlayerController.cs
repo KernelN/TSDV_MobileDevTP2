@@ -1,18 +1,18 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace TheWasteland.Gameplay.Player 
 { 
-    //Composite: Ability
-    //Component: Power
-    //Leaf: Buff
-    
-    
     public class PlayerController : MonoBehaviour, IHittable
     {
         [Header("Set Values")]
         [SerializeField] Rigidbody rb;
         [SerializeField] IKFootSolver[] ikFoots;
+        [SerializeField] Powers.PowerSetter powerSetter;
         //[Header("Runtime Values")]
+        [Header("DEBUG")]
+        [SerializeField] bool drawGizmos;
+        List<Powers.PowerComponent> powers;
         InputManager input;
         PlayerDataSO data;
         float cHealth;
@@ -24,9 +24,13 @@ namespace TheWasteland.Gameplay.Player
         void Start()
         {
             input = InputManager.inst;
+            powers = new List<Powers.PowerComponent>();
+            powers.Add(powerSetter.AssemblePower());
+            powers[0].Cast(transform);
         }
         void Update()
         {
+            float dt = Time.deltaTime;
             if (invulnerableTimer > 0) invulnerableTimer -= Time.deltaTime;
             
             Vector2 dir = input.Axis;
@@ -37,6 +41,14 @@ namespace TheWasteland.Gameplay.Player
             Vector3 newVel = new Vector3(dir.x, 0, dir.y) * data.moveSpeed;
             newVel.y = rb.velocity.y;
             rb.velocity = newVel;
+            
+            for (int i = 0; i < powers.Count; i++)
+                powers[i].Update(dt);
+        }
+        void OnDrawGizmos()
+        {
+            if(!drawGizmos) return;
+            powerSetter.DrawGizmos(transform);
         }
 
         //Methods

@@ -2,10 +2,12 @@ using UnityEngine;
 
 namespace TheWasteland.Gameplay.Powers
 {
-    public class PowerCaster : PowerHolder
+    public class PowerCaster : MonoBehaviour
     {
         //[Header("Set Values")]
+        [SerializeField] PowerSetter setter;
         //[Header("Runtime Values")]
+        PowerComponent power;
         [Header("DEBUG")]
         bool drawGizmos = true;
 
@@ -13,6 +15,7 @@ namespace TheWasteland.Gameplay.Powers
         void Start()
         {
             //Cast power as soon as it has been setted
+            power = setter.AssemblePower();
             power.Cast(transform);
         }
         void Update()
@@ -22,9 +25,7 @@ namespace TheWasteland.Gameplay.Powers
         void OnDrawGizmos()
         {
             if(!drawGizmos) return;
-            if(effectsInOrder.Length == 0) return;
-            
-            effectsInOrder[0].DrawGizmos(transform);
+            setter.DrawGizmos(transform);
         }
 
         //Methods

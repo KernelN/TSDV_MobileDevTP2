@@ -9,12 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3561ff1dc4e6454abad7fc5984a457d, type: 3}
-  m_Name: LightWaveSO
+  m_Script: {fileID: 11500000, guid: 66809e7a28fe88a488c93105b8a23c25, type: 3}
+  m_Name: WaveMakerSO
   m_EditorClassIdentifier: 
-  castCooldown: 0.2
-  hitRadius: 11
+  castCooldown: 2
+  lifeTime: 0.8
+  prefab: {fileID: 2435096583538220646, guid: c6ddda6ab28fe544aae8fcb36bdf1c74, type: 3}
   targetLayers:
     serializedVersion: 2
     m_Bits: 128
-  hitsToStop: -1
+  detectRange: 0
+  launchOffset: 0
+  stickToCaster: 1

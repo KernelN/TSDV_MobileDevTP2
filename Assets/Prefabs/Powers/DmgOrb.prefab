@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7029538294075605568}
   - component: {fileID: 3664594863035434443}
   - component: {fileID: 4471906510345847044}
-  - component: {fileID: 4743612041656200040}
   - component: {fileID: 3858721317316870181}
   m_Layer: 0
   m_Name: DmgOrb
@@ -30,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.92637, y: 12.11, z: 50.729263}
-  m_LocalScale: {x: 0.53154, y: 0.53154, z: 0.53154}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1042947270199109754}
   m_Father: {fileID: 0}
@@ -64,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 144561050ef219a47a4fed8e616fc95f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,27 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4743612041656200040
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8888427197965140261}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3858721317316870181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,9 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6dcc53a19a6d554fb9a26310ec949c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectsInOrder:
-  - {fileID: 11400000, guid: 16b1b6d8ef4998b4f83b706b0d20dc22, type: 2}
-  - {fileID: 11400000, guid: 2fd9bed81f9abb447918b75b0eb711cb, type: 2}
+  setter:
+    effectsInOrder:
+    - {fileID: 11400000, guid: 16b1b6d8ef4998b4f83b706b0d20dc22, type: 2}
+    - {fileID: 11400000, guid: 2fd9bed81f9abb447918b75b0eb711cb, type: 2}
 --- !u!1001 &1771283523539500956
 PrefabInstance:
   m_ObjectHideFlags: 0

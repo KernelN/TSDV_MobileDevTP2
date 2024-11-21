@@ -2,28 +2,24 @@ using UnityEngine;
 
 namespace TheWasteland.Gameplay.Powers
 {
-    public class PowerHolder : MonoBehaviour
+    [System.Serializable]
+    public class PowerSetter
     {
-        //[Header("Set Values")]
-        [SerializeField] internal PowerDataSO[] effectsInOrder;
-        //[Header("Runtime Values")]
-        internal PowerComponent power;
-
-        //Unity Events
-        internal void Awake()
+        [SerializeField] PowerDataSO[] effectsInOrder;
+        
+        public PowerComponent AssemblePower()
         {
             //Instantiate last effect
-            power = CreateEffect(effectsInOrder[^1]);
+            PowerComponent power = CreateEffect(effectsInOrder[^1]);
             
             for (int i = effectsInOrder.Length-2; i >= 0; i--)
             {
                 //Instantiate each effect, using previous as decorator  
                 power = CreateEffect(effectsInOrder[i], power);
             }
-        }
 
-        //Methods
-        
+            return power;
+        }
         PowerComponent CreateEffect(PowerDataSO data, PowerComponent wrappee = null)
         {
             if (data == null) return null;
@@ -48,6 +44,14 @@ namespace TheWasteland.Gameplay.Powers
             
             newPower.Set(data.CreateInstance());
             return newPower;
+        }
+        public void DrawGizmos(Transform t)
+        {
+            if(effectsInOrder == null) return;
+            if(effectsInOrder.Length == 0) return;
+            if(effectsInOrder[0] == null) return;
+            
+            effectsInOrder[0].DrawGizmos(t);
         }
     }
 }

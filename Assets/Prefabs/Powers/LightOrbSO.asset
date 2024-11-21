@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LightOrbSO
   m_EditorClassIdentifier: 
   castCooldown: 1
-  hitRadius: 0.8
+  hitRadius: 1
   targetLayers:
     serializedVersion: 2
     m_Bits: 128
