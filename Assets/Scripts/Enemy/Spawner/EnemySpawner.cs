@@ -157,8 +157,11 @@ namespace TheWasteland.Gameplay.Enemy
         void OnEnemyDied(int waveIndex)
         {
             currentEnemies--;
-            waveEnemies.TryGetValue(waveIndex, out List<EnemyController> enemies);
-            enemies.RemoveAt(0);
+            if (waveEnemies.TryGetValue(waveIndex, out List<EnemyController> enemies))
+            {
+                enemies.RemoveAt(0);
+                waveEnemies[waveIndex] = enemies;
+            }
         }
     }
 }

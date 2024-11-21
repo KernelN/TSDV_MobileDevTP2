@@ -35,7 +35,11 @@ namespace TheWasteland.Gameplay.Enemy
         public void GetHitted(float dmg)
         {
             cHealth -= dmg;
-            if (cHealth <= 0) Died?.Invoke();
+            if (cHealth <= 0)
+            {
+                Died?.Invoke();
+                Destroy(gameObject);
+            }
         }
     }
 }
