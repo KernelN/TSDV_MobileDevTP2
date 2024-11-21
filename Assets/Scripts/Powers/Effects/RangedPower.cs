@@ -59,8 +59,10 @@ namespace TheWasteland.Gameplay.Powers
             Vector3 dir = target.transform.position - caster.position;
             dir.y = 0;
             dir.Normalize();
+
+            Vector3 pos = caster.position + dir * data.launchOffset;
             
-            GameObject go = Object.Instantiate(data.prefab, caster.position, Quaternion.identity);
+            GameObject go = Object.Instantiate(data.prefab, pos, Quaternion.identity);
             go.transform.forward = dir;
             
             projectiles.Add(go.transform);
