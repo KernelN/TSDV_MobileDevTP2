@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cafb0f6a33f36b34e9b5391dd324b228, type: 3}
-  m_Name: WeakMeleeEnemy
+  m_Script: {fileID: 11500000, guid: ab33d3dea3392a8459f3285307617abd, type: 3}
+  m_Name: Buff_Speed
   m_EditorClassIdentifier: 
-  health: 5
-  speed: 10
-  attackCooldown: 0.75
-  attackRange: 6
-  xpValue: 2
-  attackDmg: 3
+  name: Increase Speed
+  targetStats: {fileID: 11400000, guid: 76bd42e67e3cfd24380544a4fd29c515, type: 2}
+  buff: {fileID: 11400000, guid: 984819053f58a8c48be6d1261a18302d, type: 2}
+  type: 1

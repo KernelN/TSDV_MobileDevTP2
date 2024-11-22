@@ -14,9 +14,29 @@ namespace TheWasteland.Gameplay.Powers
     public class MeleeData : InstantiatorData
     {
         public bool stickToCaster { get; private set; }
+        
+        MeleeData() { }
         public MeleeData(MeleeDataSO data) : base(data)
         {
             stickToCaster = data.stickToCaster;
+        }
+        public override Stats Copy()
+        {
+            MeleeData copy = new MeleeData();
+            copy.stickToCaster = stickToCaster;
+            return copy;
+        }
+        public override void Add(StatsSO statsAdd)
+        {
+            base.Add(statsAdd);
+            MeleeDataSO buffSO = statsAdd as MeleeDataSO;
+            stickToCaster = buffSO.stickToCaster;
+        }
+        public override void Multiply(StatsSO statsFactors)
+        {
+            base.Multiply(statsFactors);
+            MeleeDataSO buffSO = statsFactors as MeleeDataSO;
+            stickToCaster = buffSO.stickToCaster;
         }
     }
 }

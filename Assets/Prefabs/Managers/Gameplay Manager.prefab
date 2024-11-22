@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 708583489855636725}
   - component: {fileID: 5919569680023558658}
+  - component: {fileID: 9074193753048081281}
   m_Layer: 0
   m_Name: Gameplay Manager
   m_TagString: Untagged
@@ -46,3 +47,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerData: {fileID: 11400000, guid: 76bd42e67e3cfd24380544a4fd29c515, type: 2}
+--- !u!114 &9074193753048081281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4066066928331935699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1da144714513ef24286701203c15ca2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XpToLevelUp: 10
+  rewards:
+  - {fileID: 11400000, guid: 04e042dffce2bdf4da0091ef0ce7d43a, type: 2}
+  - {fileID: 11400000, guid: 6b2ff2bb3d1c23949be153a4ac34d68a, type: 2}
+  - {fileID: 11400000, guid: 6e6530a6fe789414482b7ecb3c3233fc, type: 2}
+  levelUpScreen: {fileID: 0}
+  rewardScreens: []

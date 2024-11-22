@@ -21,12 +21,13 @@ namespace TheWasteland.Gameplay.Powers
 
     public abstract class InstantiatorData : PowerData
     {
-        public float lifeTime { get; private set; }
-        public GameObject prefab { get; private set; }
-        public LayerMask targetLayers { get; private set; }
-        public float detectRange { get; private set; }
-        public float launchOffset { get; private set; }
+        public float lifeTime { get; internal set; }
+        public GameObject prefab { get; internal set; }
+        public LayerMask targetLayers { get; internal set; }
+        public float detectRange { get; internal set; }
+        public float launchOffset { get; internal set; }
         
+        internal InstantiatorData() { }
         protected InstantiatorData(InstantiatorDataSO so) : base(so)
         {
             prefab = so.prefab;
@@ -34,6 +35,20 @@ namespace TheWasteland.Gameplay.Powers
             detectRange = so.detectRange;
             launchOffset = so.launchOffset;
             lifeTime = so.lifeTime;
+        }
+        public override void Add(StatsSO statsAdd)
+        {
+            InstantiatorDataSO buffSO = statsAdd as InstantiatorDataSO;
+            lifeTime += buffSO.lifeTime;
+            detectRange += buffSO.detectRange;
+            launchOffset += buffSO.launchOffset;
+        }
+        public override void Multiply(StatsSO statsFactors)
+        {
+            InstantiatorDataSO buffSO = statsFactors as InstantiatorDataSO;
+            if(buffSO.lifeTime > 0) lifeTime *= buffSO.lifeTime;
+            if(buffSO.detectRange > 0) detectRange *= buffSO.detectRange;
+            if(buffSO.launchOffset > 0) launchOffset *= buffSO.launchOffset;
         }
     }
 }

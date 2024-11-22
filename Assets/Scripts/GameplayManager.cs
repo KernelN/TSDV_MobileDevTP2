@@ -1,6 +1,5 @@
 using TheWasteland.Gameplay.Player;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Universal.Singletons;
 
 namespace TheWasteland.Gameplay
@@ -9,8 +8,10 @@ namespace TheWasteland.Gameplay
     {
         //[Header("Set Values")]
         [SerializeField] PlayerController player;
-        [SerializeField] PlayerDataSO playerData;
+        [SerializeField] PlayerDataSO playerData; //pensar como conseguir poder nuevo
         //[Header("Runtime Values")]
+        LevelManager levelManager;
+        int coins;
 
         public System.Action GameOver;
         
@@ -21,14 +22,24 @@ namespace TheWasteland.Gameplay
             
             if(!player)
                 player = FindObjectOfType<PlayerController>();
-            player.Set(playerData);
+            player.Set(new PlayerData(playerData));
             player.Died += () =>
             {
                 Time.timeScale = 0;
                 GameOver?.Invoke();
             };
         }
+        void Start()
+        {
+            levelManager = LevelManager.inst;
+            levelManager.Set(player);
+        }
 
         //Methods
+        public void EarnXp(int xpValue)
+        {
+            if (levelManager.TryLevelUp(xpValue))
+                coins++;
+        }
     }
 }

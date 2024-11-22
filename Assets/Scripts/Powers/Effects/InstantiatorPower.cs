@@ -71,6 +71,13 @@ namespace TheWasteland.Gameplay.Powers
             
             cooldown = data.castCooldown;
         }
+        public bool GetStats(StatsSO so, out Stats stats)
+        {
+            stats = null;
+            if(so != data.ogSO) return false;
+            stats = data;
+            return true;
+        }
         Collider CheckForTargets(Vector3 pos)
         {
             Collider[] hits;

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace TheWasteland.Gameplay.Powers
 {
     public enum EffectType { Ranged, Melee, RadialHit, Dmg }
-    public abstract class PowerDataSO : ScriptableObject
+    public abstract class PowerDataSO : StatsSO
     {      
         [Min(0)] public float castCooldown;
 
@@ -12,10 +12,11 @@ namespace TheWasteland.Gameplay.Powers
         public virtual void DrawGizmos(Transform t) {}
     }
 
-    public abstract class PowerData
+    public abstract class PowerData : Stats
     {
         public float castCooldown { get; internal set; }
 
+        internal PowerData() { }
         public PowerData(PowerDataSO data)
         {
             castCooldown = data.castCooldown;

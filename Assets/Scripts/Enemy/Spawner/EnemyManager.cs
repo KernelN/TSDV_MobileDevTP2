@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 namespace TheWasteland.Gameplay.Enemy
 {
-    public class EnemySpawner : MonoBehaviour
+    public class EnemyManager : MonoBehaviour
     {
         enum EnemyType { Melee, Range };
 
@@ -21,17 +21,23 @@ namespace TheWasteland.Gameplay.Enemy
         }
         
         [Header("Set Values")]
+        //General
         [SerializeField] Transform player;
-        [SerializeField] WaveData[] waves;
-        [SerializeField] int maxEnemies = 50;
         [SerializeField, Min(0)] float spawnMinDist = 10;
-        //[Header("Runtime Values")]
+        GameplayManager gameplayManager;
+        
+        //Enemy count
+        [SerializeField] int maxEnemies = 50;
+        int currentEnemies = 0;
+        
+        //Waves
+        [SerializeField] WaveData[] waves;
+        int waveIndex = 0;
         List<(EnemyFactory, int)> factories;
         Dictionary<int, List<EnemyController>> waveEnemies;
         Dictionary<int, float> respawnTimers;
-        int waveIndex = 0;
-        int currentEnemies = 0;
         float timer;
+        
         [Header("DEBUG")]
         [SerializeField] bool drawGizmos = false;
         [SerializeField] Color gizmosColor = Color.Lerp(Color.red, Color.clear, 0.5f);
@@ -42,6 +48,8 @@ namespace TheWasteland.Gameplay.Enemy
             factories = new List<(EnemyFactory, int)>();
             waveEnemies = new Dictionary<int, List<EnemyController>>();
             respawnTimers = new Dictionary<int, float>();
+            
+            gameplayManager = GameplayManager.inst;
         }
         void Update()
         {
@@ -159,6 +167,7 @@ namespace TheWasteland.Gameplay.Enemy
             currentEnemies--;
             if (waveEnemies.TryGetValue(waveIndex, out List<EnemyController> enemies))
             {
+                gameplayManager.EarnXp(enemies[0].data.xpValue);
                 enemies.RemoveAt(0);
                 waveEnemies[waveIndex] = enemies;
             }

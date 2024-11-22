@@ -83,5 +83,12 @@ namespace TheWasteland.Gameplay.Powers
                 targetHits.Add(1);
             }
         }
+        public override bool GetStats(StatsSO so, out Stats stats)
+        {
+            stats = null;
+            if(so != data.ogSO) return false;
+            stats = data;
+            return true;
+        }
     }
 }

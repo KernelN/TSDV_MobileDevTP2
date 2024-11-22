@@ -55,5 +55,12 @@ namespace TheWasteland.Gameplay.Powers
         {
             t = target;
         }
+        public override bool GetStats(StatsSO so, out Stats stats)
+        {
+            stats = null;
+            if(so != data.ogSO) return false;
+            stats = data;
+            return true;
+        }
     }
 }

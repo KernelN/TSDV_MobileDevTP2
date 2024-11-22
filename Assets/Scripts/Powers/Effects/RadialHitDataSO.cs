@@ -22,11 +22,32 @@ namespace TheWasteland.Gameplay.Powers
         public LayerMask targetLayers { get; private set; }
         public int hitsToStop { get; private set; }
         
+        RadialHitData() {}
         public RadialHitData(RadialHitDataSO data) : base(data)
         {
             hitRadius = data.hitRadius;
             targetLayers = data.targetLayers;
             hitsToStop = data.hitsToStop;
+        }
+        public override Stats Copy()
+        {
+            RadialHitData copy = new RadialHitData();
+            copy.hitRadius = hitRadius;
+            copy.targetLayers = targetLayers;
+            copy.hitsToStop = hitsToStop;
+            return copy;
+        }
+        public override void Add(StatsSO statsAdd)
+        {
+            RadialHitDataSO buffSO = statsAdd as RadialHitDataSO;
+            hitRadius += buffSO.hitRadius;
+            hitsToStop += buffSO.hitsToStop;
+        }
+        public override void Multiply(StatsSO statsFactors)
+        {
+            RadialHitDataSO buffSO = statsFactors as RadialHitDataSO;
+            if(buffSO.hitRadius > 0) hitRadius *= buffSO.hitRadius;
+            if(buffSO.hitsToStop > 0) hitsToStop *= buffSO.hitsToStop;
         }
     }
 }

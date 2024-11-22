@@ -64,7 +64,29 @@ namespace TheWasteland.Gameplay.Player
         public void Set(PlayerData playerData)
         {
             data = playerData;
+            ReSet();
+        }
+        public void ReSet()
+        {
             cHealth = data.health;
+        }
+        public Stats GetStats(StatsSO so)
+        {
+            if (so is PlayerDataSO) return data;
+
+            for (int i = 0; i < powers.Count; i++)
+            {
+                if(powers[i].GetStats(so, out Stats stats))
+                    return stats;
+            }
+
+            return null;
+        }
+        public void AddPower(StatsSO buffTargetStats)
+        {
+            int newPowerIndex = powers.Count;
+            powers.Add(powerSetter.AssemblePower((Powers.PowerDataSO)buffTargetStats));
+            powers[newPowerIndex].Cast(transform);
         }
     }
 }

@@ -12,5 +12,6 @@ namespace TheWasteland.Gameplay.Powers
         public abstract void Set(PowerData powerData);
         public virtual void Update(float dt) => powerComponent.Update(dt);
         public virtual void Cast(Transform target) => powerComponent.Cast(target);
+        public abstract bool GetStats(StatsSO so, out Stats stats);
     }
 }

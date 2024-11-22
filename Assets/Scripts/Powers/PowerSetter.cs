@@ -20,6 +20,19 @@ namespace TheWasteland.Gameplay.Powers
 
             return power;
         }
+        public PowerComponent AssemblePower(PowerDataSO newEffect)
+        {
+            //Instantiate last effect
+            PowerComponent power = CreateEffect(newEffect);
+            
+            // for (int i = effectsInOrder.Length-2; i >= 0; i--)
+            // {
+            //     //Instantiate each effect, using previous as decorator  
+            //     power = CreateEffect(effectsInOrder[i], power);
+            // }
+
+            return power;
+        }
         PowerComponent CreateEffect(PowerDataSO data, PowerComponent wrappee = null)
         {
             if (data == null) return null;

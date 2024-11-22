@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cafb0f6a33f36b34e9b5391dd324b228, type: 3}
-  m_Name: WeakMeleeEnemy
+  m_Script: {fileID: 11500000, guid: c6fa3d3b65d864b42ba5e4139167a286, type: 3}
+  m_Name: Speed+,5
   m_EditorClassIdentifier: 
-  health: 5
-  speed: 10
-  attackCooldown: 0.75
-  attackRange: 6
-  xpValue: 2
-  attackDmg: 3
+  health: 0
+  invulnerableTime: 0
+  moveSpeed: 0.5
