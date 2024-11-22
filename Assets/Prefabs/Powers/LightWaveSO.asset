@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LightWaveSO
   m_EditorClassIdentifier: 
   castCooldown: 0.2
-  hitRadius: 11
+  hitRadius: 14
   targetLayers:
     serializedVersion: 2
     m_Bits: 128

@@ -14,7 +14,7 @@ namespace TheWasteland.Gameplay.Player
         [SerializeField] bool drawGizmos;
         List<Powers.PowerComponent> powers;
         InputManager input;
-        PlayerDataSO data;
+        PlayerData data;
         float cHealth;
         float invulnerableTimer;
 
@@ -37,8 +37,10 @@ namespace TheWasteland.Gameplay.Player
             float sqr = dir.sqrMagnitude;
             for (int i = 0; i < ikFoots.Length; i++)
                 ikFoots[i].SetExtraSpeed(sqr);
+
+            transform.forward = new Vector3(dir.x, 0, dir.y);
             
-            Vector3 newVel = new Vector3(dir.x, 0, dir.y) * data.moveSpeed;
+            Vector3 newVel = transform.forward * data.moveSpeed;
             newVel.y = rb.velocity.y;
             rb.velocity = newVel;
             
@@ -59,7 +61,7 @@ namespace TheWasteland.Gameplay.Player
             invulnerableTimer = data.invulnerableTime;
             if (cHealth <= 0) Died?.Invoke();
         }
-        public void Set(PlayerDataSO playerData)
+        public void Set(PlayerData playerData)
         {
             data = playerData;
             cHealth = data.health;
