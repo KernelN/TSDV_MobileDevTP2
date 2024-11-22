@@ -31,19 +31,30 @@ namespace TheWasteland.Gameplay.Player
         void Update()
         {
             float dt = Time.deltaTime;
+            
+            if(dt == 0) return;
             if (invulnerableTimer > 0) invulnerableTimer -= Time.deltaTime;
             
+            //Get dir
             Vector2 dir = input.Axis;
-            float sqr = dir.sqrMagnitude;
-            for (int i = 0; i < ikFoots.Length; i++)
-                ikFoots[i].SetExtraSpeed(sqr);
-
-            transform.forward = new Vector3(dir.x, 0, dir.y);
             
-            Vector3 newVel = transform.forward * data.moveSpeed;
+            //Update IKs
+            float mag = dir.magnitude;
+            for (int i = 0; i < ikFoots.Length; i++)
+                ikFoots[i].SetExtraSpeed(mag);
+
+            //Update dir (if there's any dir input)
+            if(mag > 0)
+                transform.forward = new Vector3(dir.x, 0, dir.y);
+            
+            
+            //Update vel (stops if there's no dir input)
+            float speed = data.moveSpeed * mag;
+            Vector3 newVel = speed * transform.forward;
             newVel.y = rb.velocity.y;
             rb.velocity = newVel;
             
+            //Update powers
             for (int i = 0; i < powers.Count; i++)
                 powers[i].Update(dt);
         }
