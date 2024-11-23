@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6fa3d3b65d864b42ba5e4139167a286, type: 3}
-  m_Name: Speed+,5
+  m_Script: {fileID: 11500000, guid: ab33d3dea3392a8459f3285307617abd, type: 3}
+  m_Name: GetLightOrb
   m_EditorClassIdentifier: 
-  health: 0
-  invulnerableTime: 0
-  moveSpeed: 0.5
+  name: Light Orb Power
+  targetStats: {fileID: 11400000, guid: 5d9a82d970aee604fb34b34d65ad512e, type: 2}
+  buff: {fileID: 0}
+  type: 0

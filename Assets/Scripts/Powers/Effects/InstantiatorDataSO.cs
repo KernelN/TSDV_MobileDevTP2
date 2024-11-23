@@ -39,6 +39,8 @@ namespace TheWasteland.Gameplay.Powers
         public override void Add(StatsSO statsAdd)
         {
             InstantiatorDataSO buffSO = statsAdd as InstantiatorDataSO;
+            if(buffSO.prefab)
+                prefab = buffSO.prefab;
             lifeTime += buffSO.lifeTime;
             detectRange += buffSO.detectRange;
             launchOffset += buffSO.launchOffset;
@@ -46,15 +48,18 @@ namespace TheWasteland.Gameplay.Powers
         public override void Multiply(StatsSO statsFactors)
         {
             InstantiatorDataSO buffSO = statsFactors as InstantiatorDataSO;
+            if(buffSO.prefab) prefab = buffSO.prefab;
             if(buffSO.lifeTime > 0) lifeTime *= buffSO.lifeTime;
             if(buffSO.detectRange > 0) detectRange *= buffSO.detectRange;
             if(buffSO.launchOffset > 0) launchOffset *= buffSO.launchOffset;
         }
         public override string ToString()
         {
-            string str = "lifeTime: " + lifeTime + "\n";
-            str += "detectRange: " + detectRange + "\n";
-            str += "launchOffset: " + launchOffset;
+            string str = prefab.name + "\n";
+            str += base.ToString() + "\n";
+            str += "Life Time: " + lifeTime.ToString(fFormat) + "\n";
+            str += "Detect Range: " + detectRange.ToString(fFormat) + "\n";
+            str += "Launch Offset: " + launchOffset.ToString(fFormat);
             return str;
         }
         public override string ToString(StatsSO other)
@@ -63,14 +68,25 @@ namespace TheWasteland.Gameplay.Powers
             InstantiatorDataSO buffSO = other as InstantiatorDataSO;
             string str = "";
             
-            if(buffSO.lifeTime > 0) str += "<b>lifeTime: " + lifeTime + "</b>\n";
-            else str += "lifeTime: " + lifeTime + "\n";
+            //If buff HAS a prefab, and it's different from current
+            string temp = prefab.name;
+            if(buffSO.prefab && buffSO.prefab != prefab)
+                str += "<b>" + temp + "</b>\n";
+            else str += temp + "\n";
             
-            if(buffSO.detectRange > 0) str += "<b>detectRange: " + detectRange + "</b>\n";
-            else str += "detectRange: " + detectRange + "\n";
+            str += base.ToString(other) + "\n";
             
-            if(buffSO.launchOffset > 0) str += "<b>launchOffset: " + launchOffset + "</b>\n";
-            else str += "launchOffset: " + launchOffset;
+            temp = "Life Time: " + lifeTime.ToString(fFormat);
+            if(buffSO.lifeTime > 0) str += "<b>" + temp + "</b>\n";
+            else str += temp + "\n";
+            
+            temp = "Detect Range: " + detectRange.ToString(fFormat);
+            if(buffSO.detectRange > 0) str += "<b>" + temp + "</b>\n";
+            else str += temp + "\n";
+            
+            temp = "Launch Offset: " + launchOffset.ToString(fFormat);
+            if(buffSO.launchOffset > 0) str += "<b>" +temp + "</b>\n";
+            else str += temp;
             
             return str;
         }

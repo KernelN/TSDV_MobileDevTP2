@@ -6,6 +6,7 @@ namespace TheWasteland.Gameplay
     public abstract class Stats
     {
         public StatsSO ogSO { get; private set; }
+        internal const string fFormat = "#0.##";
         
         public Stats() {} 
         public Stats(StatsSO ogSO) { this.ogSO = ogSO; }

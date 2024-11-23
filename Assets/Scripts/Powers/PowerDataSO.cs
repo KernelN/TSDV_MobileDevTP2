@@ -10,6 +10,10 @@ namespace TheWasteland.Gameplay.Powers
         public abstract EffectType GetEffectType();
         public abstract PowerData CreateInstance();
         public virtual void DrawGizmos(Transform t) {}
+        public override string ToString()
+        {
+            return CreateInstance().ToString();
+        }
     }
 
     public abstract class PowerData : Stats
@@ -20,6 +24,27 @@ namespace TheWasteland.Gameplay.Powers
         public PowerData(PowerDataSO data)
         {
             castCooldown = data.castCooldown;
+        }
+
+        public override string ToString()
+        {
+            return "Cast Cooldown: " + castCooldown.ToString(fFormat);
+        }
+
+        public override string ToString(StatsSO other)
+        {
+            if (!(other is PowerDataSO)) return null;
+            PowerDataSO buffSO = other as PowerDataSO;
+            
+            string str = "";
+
+            string temp = "Cast Cooldown: " + castCooldown.ToString(fFormat);
+            if(buffSO.castCooldown > 0)
+                str += "<b>" + temp + "</b>";
+            else
+                str += temp;
+            
+            return str;
         }
     }
 }

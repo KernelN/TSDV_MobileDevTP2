@@ -51,10 +51,11 @@ namespace TheWasteland.Gameplay.Powers
             MeleeDataSO buffSO = other as MeleeDataSO;
             string str = base.ToString(other) + "\n";
             
+            string temp = "Stick to Player: " + buffSO.stickToCaster;
             if(buffSO.stickToCaster != stickToCaster)
-                str += "<b>stickToCaster: " + stickToCaster + "</b>";
+                str += "<b>" + temp + "</b>";
             else
-                str += "stickToCaster: " + stickToCaster;
+                str += temp;
             
             return str;
         }

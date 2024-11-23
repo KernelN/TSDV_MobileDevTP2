@@ -46,7 +46,7 @@ namespace TheWasteland.Gameplay.Powers
         public override string ToString()
         {
             string str = base.ToString() + "\n";
-            str += "moveSpeed: " + moveSpeed;
+            str += "Move Speed: " + moveSpeed.ToString(fFormat);
             return str;
         }
         public override string ToString(StatsSO other)
@@ -56,10 +56,11 @@ namespace TheWasteland.Gameplay.Powers
             RangedDataSO buffSO = other as RangedDataSO;
             string str = base.ToString(other) + "\n";
             
-            if(buffSO.moveSpeed != moveSpeed)
-                str += "<b>moveSpeed: " + moveSpeed + "</b>";
+            string temp = "Move Speed: " + moveSpeed.ToString(fFormat);
+            if(buffSO.moveSpeed > 0)
+                str += "<b>" + temp + "</b>";
             else
-                str += "moveSpeed: " + moveSpeed;
+                str += temp;
             
             return str;
             

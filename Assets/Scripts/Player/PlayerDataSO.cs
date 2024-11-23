@@ -47,8 +47,8 @@ namespace TheWasteland.Gameplay.Player
         public override string ToString()
         {
             string str = "Health: " + health + "\n";
-            str += "Invulnerable Time: " + invulnerableTime + "\n";
-            str += "Move Speed: " + moveSpeed;
+            str += "Invulnerable Time: " + invulnerableTime.ToString(fFormat) + "\n";
+            str += "Move Speed: " + moveSpeed.ToString(fFormat);
             return str;
         }
         public override string ToString(StatsSO other)
@@ -56,18 +56,25 @@ namespace TheWasteland.Gameplay.Player
             if (!(other is PlayerDataSO)) return null;
             PlayerDataSO buffSO = other as PlayerDataSO;
             string str = "";
+            
+            string temp = "Health: " + health;
             if(buffSO.health > 0)
-                str += "<b>Health: " + health + "</b>\n";
+                str += "<b>" + temp + "</b>\n";
             else
-                str += "Health: " + health + "\n";
+                str += temp + "\n";
+            
+            temp = "Invulnerable Time: " + invulnerableTime.ToString(fFormat);
             if(buffSO.invulnerableTime > 0)
-                str += "<b>Invulnerable Time: " + invulnerableTime + "</b>\n";
+                str += "<b>" + temp + "</b>\n";
             else
-                str += "Invulnerable Time: " + invulnerableTime + "\n";
+                str += temp + "\n";
+            
+            temp = "Move Speed: " + moveSpeed.ToString(fFormat);
             if(buffSO.moveSpeed > 0)
-                str += "<b>Move Speed: " + moveSpeed + "</b>";
+                str += "<b>" + temp + "</b>";
             else
-                str += "Move Speed: " + moveSpeed;
+                str += temp;
+            
             return str;
         }
     }

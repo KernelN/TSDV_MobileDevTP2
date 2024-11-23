@@ -57,7 +57,7 @@ namespace TheWasteland.Gameplay.Player
                 bool rewardSelected = false;
                 do
                 {
-                    int rewardIndex = Random.Range(0, rewardOptions.Count - 1);
+                    int rewardIndex = Random.Range(0, rewardOptions.Count);
                     BuffSO buff = rewardOptions[rewardIndex];
                     rewardOptions.RemoveAt(rewardIndex);
                     
@@ -68,7 +68,7 @@ namespace TheWasteland.Gameplay.Player
                     {
                         if(buff.buff != null) continue;
                         
-                        rewardScreens[i].SetReward(null, buff);
+                        rewardScreens[i].SetReward(buff);
                         rewardSelected = true;
                     }
                     
@@ -77,7 +77,7 @@ namespace TheWasteland.Gameplay.Player
                     {
                         if(buff.buff == null) continue;
                         
-                        rewardScreens[i].SetReward(current, buff);
+                        rewardScreens[i].SetReward(buff, current);
                         rewardSelected = true;
                     }
                 } while (!rewardSelected && rewardOptions.Count > 0);

@@ -10,7 +10,7 @@ namespace TheWasteland.Gameplay.Player
 
         public System.Action<BuffSO> RewardSelected;
 
-        public void SetReward(Stats currentStats, BuffSO buff)
+        public void SetReward(BuffSO buff, Stats currentStats = null)
         {
             this.buff = buff;
 
@@ -19,7 +19,7 @@ namespace TheWasteland.Gameplay.Player
             {
                 case BuffSO.BuffType.New:
                     rewardText.text = buff.targetStats.ToString();
-                    return;
+                    break;
                 case BuffSO.BuffType.Add:
                     newStats = currentStats.Copy();
                     newStats.Add(buff.buff);
@@ -32,8 +32,6 @@ namespace TheWasteland.Gameplay.Player
             
             if(buff.buff)
                 rewardText.text = newStats.ToString(buff.buff);
-            else
-                rewardText.text = newStats.ToString();
             titleText.text = buff.name;
         }
         public void GetReward()

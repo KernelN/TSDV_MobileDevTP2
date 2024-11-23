@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6fa3d3b65d864b42ba5e4139167a286, type: 3}
-  m_Name: InvulnerabilityX1,1
+  m_Name: Player_Speed+
   m_EditorClassIdentifier: 
   health: 0
-  invulnerableTime: 1.1
-  moveSpeed: 0
+  invulnerableTime: 0
+  moveSpeed: 1

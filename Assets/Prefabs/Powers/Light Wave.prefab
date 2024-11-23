@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3805576443115157413}
   - component: {fileID: 4706757806669534763}
   m_Layer: 0
-  m_Name: LightWave
+  m_Name: Light Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
