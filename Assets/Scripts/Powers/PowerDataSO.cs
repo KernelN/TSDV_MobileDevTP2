@@ -21,7 +21,7 @@ namespace TheWasteland.Gameplay.Powers
         public float castCooldown { get; internal set; }
 
         internal PowerData() { }
-        public PowerData(PowerDataSO data)
+        public PowerData(PowerDataSO data) : base(data)
         {
             castCooldown = data.castCooldown;
         }
