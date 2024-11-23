@@ -73,8 +73,8 @@ MonoBehaviour:
 
     yadda yadda'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 120aea4bd61a20c4d87f4206570d67fb, type: 2}
+  m_sharedMaterial: {fileID: 4352667224531453058, guid: 120aea4bd61a20c4d87f4206570d67fb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23.3
+  m_fontSize: 20.1
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -299,22 +299,22 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1807199212350427902, guid: adf35d2da8a80814ca82e0612c914fc4, type: 3}
       propertyPath: m_text
-      value: option 1
+      value: Light Wave increase invulnerability
       objectReference: {fileID: 0}
     - target: {fileID: 1807199212350427902, guid: adf35d2da8a80814ca82e0612c914fc4, type: 3}
       propertyPath: m_fontSize
-      value: 36.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1807199212350427902, guid: adf35d2da8a80814ca82e0612c914fc4, type: 3}
-      propertyPath: m_fontStyle
-      value: 32
+      value: 33.8
       objectReference: {fileID: 0}
     - target: {fileID: 1807199212350427902, guid: adf35d2da8a80814ca82e0612c914fc4, type: 3}
       propertyPath: m_fontSizeBase
-      value: 50
+      value: 33.8
       objectReference: {fileID: 0}
     - target: {fileID: 1807199212350427902, guid: adf35d2da8a80814ca82e0612c914fc4, type: 3}
       propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807199212350427902, guid: adf35d2da8a80814ca82e0612c914fc4, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5576768647262035960, guid: adf35d2da8a80814ca82e0612c914fc4, type: 3}
