@@ -65,5 +65,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6b2ff2bb3d1c23949be153a4ac34d68a, type: 2}
   - {fileID: 11400000, guid: 6e6530a6fe789414482b7ecb3c3233fc, type: 2}
   - {fileID: 11400000, guid: 2c1362a2eb92b674396640426a425f68, type: 2}
+  - {fileID: 11400000, guid: 38578267c4cf1df4982e96d15fafea13, type: 2}
+  - {fileID: 11400000, guid: 7f64065355130a449984603bb5714d62, type: 2}
   levelUpScreen: {fileID: 0}
   rewardScreens: []

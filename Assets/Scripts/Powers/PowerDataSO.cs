@@ -25,12 +25,20 @@ namespace TheWasteland.Gameplay.Powers
         {
             castCooldown = data.castCooldown;
         }
-
+        public override void Add(StatsSO statsAdd)
+        {
+            PowerDataSO buffSO = statsAdd as PowerDataSO;
+            castCooldown += buffSO.castCooldown;
+        }
+        public override void Multiply(StatsSO statsFactors)
+        {
+            PowerDataSO buffSO = statsFactors as PowerDataSO;
+            if(buffSO.castCooldown > 0) castCooldown *= buffSO.castCooldown;
+        }
         public override string ToString()
         {
             return "Cast Cooldown: " + castCooldown.ToString(fFormat);
         }
-
         public override string ToString(StatsSO other)
         {
             if (!(other is PowerDataSO)) return null;
@@ -45,6 +53,10 @@ namespace TheWasteland.Gameplay.Powers
                 str += temp;
             
             return str;
+        }
+        internal virtual void Copy(PowerData copyTo)
+        {
+            copyTo.castCooldown = castCooldown;
         }
     }
 }

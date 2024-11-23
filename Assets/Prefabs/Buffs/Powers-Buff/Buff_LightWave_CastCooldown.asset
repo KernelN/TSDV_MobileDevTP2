@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab33d3dea3392a8459f3285307617abd, type: 3}
-  m_Name: Buff_Speed
+  m_Name: Buff_LightWave_CastCooldown
   m_EditorClassIdentifier: 
-  name: Increase Speed
-  targetStats: {fileID: 11400000, guid: 76bd42e67e3cfd24380544a4fd29c515, type: 2}
-  buff: {fileID: 11400000, guid: 984819053f58a8c48be6d1261a18302d, type: 2}
-  type: 1
+  name: Faster Light Wave
+  targetStats: {fileID: 11400000, guid: e55f23c0cd7aa4b409804dc3907da0e3, type: 2}
+  buff: {fileID: 11400000, guid: 9cbf3b6511c754c4f907bca65ac20798, type: 2}
+  type: 2

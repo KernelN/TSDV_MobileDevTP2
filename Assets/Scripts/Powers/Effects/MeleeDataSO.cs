@@ -23,6 +23,7 @@ namespace TheWasteland.Gameplay.Powers
         public override Stats Copy()
         {
             MeleeData copy = new MeleeData();
+            base.Copy(copy);
             copy.stickToCaster = stickToCaster;
             return copy;
         }

@@ -1,4 +1,3 @@
-using TheWasteland.Gameplay.Powers;
 using UnityEngine;
 
 namespace TheWasteland.Gameplay.Powers
@@ -38,6 +37,7 @@ namespace TheWasteland.Gameplay.Powers
         }
         public override void Add(StatsSO statsAdd)
         {
+            base.Add(statsAdd);
             InstantiatorDataSO buffSO = statsAdd as InstantiatorDataSO;
             if(buffSO.prefab)
                 prefab = buffSO.prefab;
@@ -47,6 +47,7 @@ namespace TheWasteland.Gameplay.Powers
         }
         public override void Multiply(StatsSO statsFactors)
         {
+            base.Multiply(statsFactors);
             InstantiatorDataSO buffSO = statsFactors as InstantiatorDataSO;
             if(buffSO.prefab) prefab = buffSO.prefab;
             if(buffSO.lifeTime > 0) lifeTime *= buffSO.lifeTime;
@@ -69,10 +70,14 @@ namespace TheWasteland.Gameplay.Powers
             string str = "";
             
             //If buff HAS a prefab, and it's different from current
-            string temp = prefab.name;
-            if(buffSO.prefab && buffSO.prefab != prefab)
-                str += "<b>" + temp + "</b>\n";
-            else str += temp + "\n";
+            string temp = "";
+            if (buffSO.prefab)
+            {
+                temp = prefab.name;
+                if (buffSO.prefab != prefab)
+                    str += "<b>" + temp + "</b>\n";
+                else str += temp + "\n";
+            }
             
             str += base.ToString(other) + "\n";
             
@@ -89,6 +94,17 @@ namespace TheWasteland.Gameplay.Powers
             else str += temp;
             
             return str;
+        }
+
+        internal override void Copy(PowerData copyTo)
+        {
+            base.Copy(copyTo);
+            InstantiatorData copy = copyTo as InstantiatorData;
+            copy.lifeTime = lifeTime;
+            copy.prefab = prefab;
+            copy.targetLayers = targetLayers;
+            copy.detectRange = detectRange;
+            copy.launchOffset = launchOffset;
         }
     }
 }

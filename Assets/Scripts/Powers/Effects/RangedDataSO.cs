@@ -23,11 +23,7 @@ namespace TheWasteland.Gameplay.Powers
         public override Stats Copy()
         {
             RangedData copy = new RangedData();
-            copy.lifeTime = lifeTime;
-            copy.prefab = prefab;
-            copy.targetLayers = targetLayers;
-            copy.detectRange = detectRange;
-            copy.launchOffset = launchOffset;
+            base.Copy(copy);
             copy.moveSpeed = moveSpeed;
             return copy;
         }

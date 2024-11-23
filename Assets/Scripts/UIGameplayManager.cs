@@ -33,7 +33,6 @@ namespace TheWasteland.Gameplay
             isPaused = !isPaused;
             gameManager.SetPause(isPaused);
             pauseScreen.SetActive(isPaused);
-            inGameScreen.SetActive(!isPaused);
         }
     }
 }
