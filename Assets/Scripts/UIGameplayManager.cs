@@ -6,6 +6,7 @@ namespace TheWasteland.Gameplay
     {
         //[Header("Set Values")]
         [SerializeField] GameObject inGameScreen;
+        [SerializeField] GameObject levelUpScreen;
         [SerializeField] GameObject pauseScreen;
         [SerializeField] GameObject gameOverScreen;
         //[Header("Runtime Values")]
@@ -24,6 +25,18 @@ namespace TheWasteland.Gameplay
                 Time.timeScale = 0;
                 gameOverScreen.SetActive(true);
                 inGameScreen.SetActive(false);
+            };
+            
+            Player.LevelManager lvlManager = Player.LevelManager.inst;
+            lvlManager.LeveledUp += () =>
+            {
+                inGameScreen.SetActive(false);
+                levelUpScreen.SetActive(true);
+            };
+            lvlManager.RewardSelected += () =>
+            {
+                inGameScreen.SetActive(true);
+                levelUpScreen.SetActive(false);
             };
         }
 

@@ -1552,7 +1552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8862983753113279154, guid: 4c9ae76d2e11ee04ba30d066575e4184, type: 3}
       propertyPath: m_Name
-      value: Canvas - Gameplay Variant
+      value: Canvas - Gameplay
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1595,6 +1595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGameScreen: {fileID: 5241596985759186148}
+  levelUpScreen: {fileID: 2087010082519877654}
   pauseScreen: {fileID: 1643883186994327135}
   gameOverScreen: {fileID: 2898997304592617029}
 --- !u!114 &4779277671394074258

@@ -15,9 +15,11 @@ namespace TheWasteland.Gameplay.Player
         PlayerController player;
         
         [Header("UI")]
-        [SerializeField] GameObject levelUpScreen;
         [SerializeField] LevelRewardUI[] rewardScreens;
 
+        public System.Action LeveledUp;
+        public System.Action RewardSelected;
+        
         //Unity Events
         void Start()
         {
@@ -85,9 +87,8 @@ namespace TheWasteland.Gameplay.Player
                 if(rewardSelected) rewardScreens[i].gameObject.SetActive(true);
             }
             
-            //Show level up screen
-            levelUpScreen.SetActive(true);
             GameManager.inst.SetPause(true);
+            LeveledUp?.Invoke();
         }
         void ApplyReward(BuffSO buff)
         {
@@ -105,8 +106,8 @@ namespace TheWasteland.Gameplay.Player
             }
             
             player.ReSet();
-            levelUpScreen.SetActive(false);
             GameManager.inst.SetPause(false);
+            RewardSelected?.Invoke();
         }
     }
 }
