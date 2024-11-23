@@ -44,13 +44,16 @@ namespace TheWasteland.Gameplay.Player
         void LevelUpPlayer()
         {
             //Reset Xp and increase level
-            playerXp = 0;
+            playerXp -= XpToLevelUp * playerLevels;
             playerLevels++;
             
             //Set reward options UI
+            rewardOptions.Clear();
             rewardOptions.AddRange(rewards);
-            for (int i = 0; i < rewardScreens.Length; i++)
+            for (int i = 0; i < rewardScreens.Length && rewardOptions.Count > 0; i++)
             {
+                rewardScreens[i].gameObject.SetActive(false);
+
                 bool rewardSelected = false;
                 do
                 {
@@ -60,6 +63,7 @@ namespace TheWasteland.Gameplay.Player
                     
                     Stats current = player.GetStats(buff.targetStats);
 
+                    //If player doesn't have this stats, check if it's an add
                     if (current == null)
                     {
                         if(buff.buff != null) continue;
@@ -67,6 +71,8 @@ namespace TheWasteland.Gameplay.Player
                         rewardScreens[i].SetReward(null, buff);
                         rewardSelected = true;
                     }
+                    
+                    //If player HAS this stats, check if it's an add
                     else
                     {
                         if(buff.buff == null) continue;
@@ -75,8 +81,9 @@ namespace TheWasteland.Gameplay.Player
                         rewardSelected = true;
                     }
                 } while (!rewardSelected && rewardOptions.Count > 0);
+                
+                if(rewardSelected) rewardScreens[i].gameObject.SetActive(true);
             }
-            rewardOptions.Clear();
             
             //Show level up screen
             levelUpScreen.SetActive(true);
