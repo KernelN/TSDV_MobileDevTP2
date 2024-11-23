@@ -31,7 +31,6 @@ namespace TheWasteland.Gameplay.Powers
             copy.moveSpeed = moveSpeed;
             return copy;
         }
-
         public override void Add(StatsSO statsAdd)
         {
             base.Add(statsAdd);
@@ -43,6 +42,27 @@ namespace TheWasteland.Gameplay.Powers
             base.Multiply(statsFactors);
             RangedDataSO buffSO = statsFactors as RangedDataSO;
             if(buffSO.moveSpeed > 0) moveSpeed *= buffSO.moveSpeed;
+        }
+        public override string ToString()
+        {
+            string str = base.ToString() + "\n";
+            str += "moveSpeed: " + moveSpeed;
+            return str;
+        }
+        public override string ToString(StatsSO other)
+        {
+            if (!(other is RangedDataSO)) return null;
+            
+            RangedDataSO buffSO = other as RangedDataSO;
+            string str = base.ToString(other) + "\n";
+            
+            if(buffSO.moveSpeed != moveSpeed)
+                str += "<b>moveSpeed: " + moveSpeed + "</b>";
+            else
+                str += "moveSpeed: " + moveSpeed;
+            
+            return str;
+            
         }
     }
 }

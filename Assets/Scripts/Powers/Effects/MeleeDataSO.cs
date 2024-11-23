@@ -38,5 +38,25 @@ namespace TheWasteland.Gameplay.Powers
             MeleeDataSO buffSO = statsFactors as MeleeDataSO;
             stickToCaster = buffSO.stickToCaster;
         }
+        public override string ToString()
+        {
+            string str = base.ToString() + "\n";
+            str += "stickToCaster: " + stickToCaster;
+            return str;
+        }
+        public override string ToString(StatsSO other)
+        {
+            if (!(other is MeleeDataSO)) return null;
+            
+            MeleeDataSO buffSO = other as MeleeDataSO;
+            string str = base.ToString(other) + "\n";
+            
+            if(buffSO.stickToCaster != stickToCaster)
+                str += "<b>stickToCaster: " + stickToCaster + "</b>";
+            else
+                str += "stickToCaster: " + stickToCaster;
+            
+            return str;
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace TheWasteland.Gameplay
         public abstract Stats Copy();
         public abstract void Add(StatsSO statsAdd);
         public abstract void Multiply(StatsSO statsFactors);
+        public virtual string ToString(StatsSO other) => ToString();
         public bool TryApplyBuff(BuffSO buff)
         {
             if(buff.targetStats != ogSO) return false;

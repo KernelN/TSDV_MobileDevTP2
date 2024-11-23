@@ -30,7 +30,10 @@ namespace TheWasteland.Gameplay.Player
                     break;
             }
             
-            rewardText.text = newStats.ToString();
+            if(buff.buff)
+                rewardText.text = newStats.ToString(buff.buff);
+            else
+                rewardText.text = newStats.ToString();
             titleText.text = buff.name;
         }
         public void GetReward()

@@ -44,12 +44,30 @@ namespace TheWasteland.Gameplay.Player
             if(buffSO.invulnerableTime > 0) invulnerableTime *= buffSO.invulnerableTime;
             if(buffSO.moveSpeed > 0) moveSpeed *= buffSO.moveSpeed;
         }
-
         public override string ToString()
         {
             string str = "Health: " + health + "\n";
             str += "Invulnerable Time: " + invulnerableTime + "\n";
             str += "Move Speed: " + moveSpeed;
+            return str;
+        }
+        public override string ToString(StatsSO other)
+        {
+            if (!(other is PlayerDataSO)) return null;
+            PlayerDataSO buffSO = other as PlayerDataSO;
+            string str = "";
+            if(buffSO.health > 0)
+                str += "<b>Health: " + health + "</b>\n";
+            else
+                str += "Health: " + health + "\n";
+            if(buffSO.invulnerableTime > 0)
+                str += "<b>Invulnerable Time: " + invulnerableTime + "</b>\n";
+            else
+                str += "Invulnerable Time: " + invulnerableTime + "\n";
+            if(buffSO.moveSpeed > 0)
+                str += "<b>Move Speed: " + moveSpeed + "</b>";
+            else
+                str += "Move Speed: " + moveSpeed;
             return str;
         }
     }

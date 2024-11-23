@@ -50,5 +50,29 @@ namespace TheWasteland.Gameplay.Powers
             if(buffSO.detectRange > 0) detectRange *= buffSO.detectRange;
             if(buffSO.launchOffset > 0) launchOffset *= buffSO.launchOffset;
         }
+        public override string ToString()
+        {
+            string str = "lifeTime: " + lifeTime + "\n";
+            str += "detectRange: " + detectRange + "\n";
+            str += "launchOffset: " + launchOffset;
+            return str;
+        }
+        public override string ToString(StatsSO other)
+        {
+            if (!(other is InstantiatorDataSO)) return null;
+            InstantiatorDataSO buffSO = other as InstantiatorDataSO;
+            string str = "";
+            
+            if(buffSO.lifeTime > 0) str += "<b>lifeTime: " + lifeTime + "</b>\n";
+            else str += "lifeTime: " + lifeTime + "\n";
+            
+            if(buffSO.detectRange > 0) str += "<b>detectRange: " + detectRange + "</b>\n";
+            else str += "detectRange: " + detectRange + "\n";
+            
+            if(buffSO.launchOffset > 0) str += "<b>launchOffset: " + launchOffset + "</b>\n";
+            else str += "launchOffset: " + launchOffset;
+            
+            return str;
+        }
     }
 }
