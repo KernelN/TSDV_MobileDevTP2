@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace TheWasteland.Gameplay.Enemy
 {
-    [CreateAssetMenu(fileName = "EnemyData", menuName = "ScriptableObjects/EnemyData")]
     public abstract class EnemyDataSO : ScriptableObject
     {
         [Min(0)] public int health;

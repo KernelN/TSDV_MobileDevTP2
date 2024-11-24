@@ -12,7 +12,7 @@ namespace TheWasteland.Gameplay.Enemy
         struct WaveData
         {
             [Min(0)] public float startTime;
-            [Min(0)] public float stopTime;
+            [Min(-1), Tooltip("If -1, wave never stops")] public float stopTime;
             [Min(0)] public float respawnTime;
             [Min(0)] public int count;
             public EnemyType type;
@@ -72,6 +72,9 @@ namespace TheWasteland.Gameplay.Enemy
                         case EnemyType.Melee:
                             factory = new MeleeEnemyFactory(waves[i].prefab, waves[i].data, player);
                             break;
+                        case EnemyType.Range:
+                            factory = new RangeEnemyFactory(waves[i].prefab, waves[i].data, player);
+                            break;
                         default: return;
                     }
 
@@ -92,6 +95,7 @@ namespace TheWasteland.Gameplay.Enemy
                 //End waves whose time has passed
                 while (i < factories.Count && timer >= waves[factories[i].Item2].stopTime)
                 {
+                    if(waves[factories[i].Item2].stopTime == -1) break;
                     waveEnemies.Remove(factories[i].Item2);
                     respawnTimers.Remove(factories[i].Item2);
                     factories.RemoveAt(i);
@@ -167,6 +171,7 @@ namespace TheWasteland.Gameplay.Enemy
             currentEnemies--;
             if (waveEnemies.TryGetValue(waveIndex, out List<EnemyController> enemies))
             {
+                if (enemies.Count == 0) return;
                 gameplayManager.EarnXp(enemies[0].data.xpValue);
                 enemies.RemoveAt(0);
                 waveEnemies[waveIndex] = enemies;
