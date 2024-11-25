@@ -8,12 +8,18 @@ namespace TheWasteland.Gameplay
     {
         //[Header("Set Values")]
         [SerializeField] PlayerController player;
-        [SerializeField] PlayerDataSO playerData; //pensar como conseguir poder nuevo
+        [SerializeField] PlayerDataSO playerData; 
+        [SerializeField] float timeToCompleteStage = 5*60;
         //[Header("Runtime Values")]
+        GameManager gameManager;
         LevelManager levelManager;
+        Enemy.EnemyManager enemyManager;
         int coins;
+        float timer;
 
         public System.Action GameOver;
+        
+        public bool StageComplete => timer >= timeToCompleteStage;
         
         //Unity Events
         void Awake()
@@ -31,8 +37,22 @@ namespace TheWasteland.Gameplay
         }
         void Start()
         {
+            gameManager = GameManager.inst;
+
             levelManager = LevelManager.inst;
             levelManager.Set(player);
+            
+            enemyManager = Enemy.EnemyManager.inst;
+            enemyManager.EnemyDied += (enemyData) => EarnXp(enemyData.xpValue);
+        }
+        void Update()
+        {
+            timer += Time.deltaTime;
+            if (StageComplete)
+            {
+                int minutesPostComplete = (int)((timer - timeToCompleteStage) % 60);
+                enemyManager.SetSpawnMultiplier(minutesPostComplete*2);
+            }
         }
 
         //Methods

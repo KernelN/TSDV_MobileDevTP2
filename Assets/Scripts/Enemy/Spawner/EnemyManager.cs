@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Universal.Singletons;
 using Random = UnityEngine.Random;
 
 namespace TheWasteland.Gameplay.Enemy
 {
-    public class EnemyManager : MonoBehaviour
+    public class EnemyManager : MonoBehaviourSingletonInScene<EnemyManager>
     {
         enum EnemyType { Melee, Range };
 
@@ -24,9 +25,9 @@ namespace TheWasteland.Gameplay.Enemy
         //General
         [SerializeField] Transform player;
         [SerializeField, Min(0)] float spawnMinDist = 10;
-        GameplayManager gameplayManager;
         
         //Enemy count
+        [Tooltip("This is a hard limit, not overrided even by spawn multiplier")]
         [SerializeField] int maxEnemies = 50;
         int currentEnemies = 0;
         
@@ -37,19 +38,20 @@ namespace TheWasteland.Gameplay.Enemy
         Dictionary<int, List<EnemyController>> waveEnemies;
         Dictionary<int, float> respawnTimers;
         float timer;
+        int spawnMultiplier = 1;
         
         [Header("DEBUG")]
         [SerializeField] bool drawGizmos = false;
         [SerializeField] Color gizmosColor = Color.Lerp(Color.red, Color.clear, 0.5f);
 
+        public System.Action<EnemyDataSO> EnemyDied;
+        
         //Unity Events
         void Start()
         {
             factories = new List<(EnemyFactory, int)>();
             waveEnemies = new Dictionary<int, List<EnemyController>>();
             respawnTimers = new Dictionary<int, float>();
-            
-            gameplayManager = GameplayManager.inst;
         }
         void Update()
         {
@@ -117,8 +119,9 @@ namespace TheWasteland.Gameplay.Enemy
                 
                 //Check if there's space in the wave for more enemies
                 List<EnemyController> enemies;
-                waveEnemies.TryGetValue(factories[i].Item2, out enemies);
-                if (enemies.Count >= waves[factories[i].Item2].count) continue;
+                if(!waveEnemies.TryGetValue(factories[i].Item2, out enemies)) continue;
+                if (enemies.Count >= waves[factories[i].Item2].count * spawnMultiplier)
+                    continue;
                 
                 //Spawn new enemy
                 SpawnEnemy(factories[i].Item1, factories[i].Item2);
@@ -134,6 +137,11 @@ namespace TheWasteland.Gameplay.Enemy
         }
 
         //Methods
+        public void SetSpawnMultiplier(int multiplier)
+        {
+            if(multiplier > 0)
+                spawnMultiplier = multiplier;
+        }
         Vector3 GetSpawnPos()
         {
             Vector3 dir;
@@ -172,7 +180,8 @@ namespace TheWasteland.Gameplay.Enemy
             if (waveEnemies.TryGetValue(waveIndex, out List<EnemyController> enemies))
             {
                 if (enemies.Count == 0) return;
-                gameplayManager.EarnXp(enemies[0].data.xpValue);
+                //gameplayManager.EarnXp(enemies[0].data.xpValue);
+                EnemyDied?.Invoke(enemies[0].data);
                 enemies.RemoveAt(0);
                 waveEnemies[waveIndex] = enemies;
             }
