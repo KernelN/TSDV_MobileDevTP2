@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa9edf7174b6244ab89b30883898739, type: 3}
   m_Name: LightLauncherSO
   m_EditorClassIdentifier: Assembly-CSharp:TheWasteland.Gameplay.Powers:RangedDataSO
-  castCooldown: 2
+  castCooldown: 4
+  lifeTime: 10
   prefab: {fileID: 8888427197965140261, guid: d1fa2eccd09c94c4d93987ecc68d74b9, type: 3}
   targetLayers:
     serializedVersion: 2
     m_Bits: 128
-  detectRange: 10
+  detectRange: 20
   launchOffset: 5
-  lifeTime: 5
   moveSpeed: 5
