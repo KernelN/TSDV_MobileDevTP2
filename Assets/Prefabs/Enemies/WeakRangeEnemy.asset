@@ -15,7 +15,7 @@ MonoBehaviour:
   health: 3
   speed: 7
   attackCooldown: 2
-  attackRange: 18
+  attackRange: 24
   xpValue: 5
   projectile: {fileID: 8888427197965140261, guid: b9485ec91d7878b4a8122adb96130ed9, type: 3}
   projectileSpeed: 12

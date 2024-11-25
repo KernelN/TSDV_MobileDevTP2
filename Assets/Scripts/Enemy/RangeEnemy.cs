@@ -31,6 +31,11 @@ namespace TheWasteland.Gameplay.Enemy
             {
                 do
                 {
+                    if (projectiles[i] == null)
+                    {
+                        DestroyProj(i);
+                        continue;
+                    }
                     projectiles[i].transform.position += projectiles[i].transform.forward * projMove;
                     
                     projectilesLife[i] += dt;
@@ -89,7 +94,8 @@ namespace TheWasteland.Gameplay.Enemy
         }
         void DestroyProj(int index)
         {
-            Destroy(projectiles[index].gameObject);
+            if(projectiles[index])
+                Destroy(projectiles[index].gameObject);
             projectiles.RemoveAt(index);
             projectilesLife.RemoveAt(index);
         }
