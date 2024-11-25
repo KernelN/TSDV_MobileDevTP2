@@ -11,7 +11,7 @@ namespace TheWasteland
         public System.Action SceneChanged;
 
         public ConfigData config { get; private set; }
-        public Gameplay.GameplayData gameplayData { get; private set; }
+        public Gameplay.GameData GameData { get; private set; }
 
 
         //Unity Events
@@ -55,7 +55,7 @@ namespace TheWasteland
         void SaveAll()
         {
             // config.SaveData();
-            // gameplayData.SaveData();
+            GameData.SaveData();
         }
         void LoadAll()
         {
@@ -64,10 +64,10 @@ namespace TheWasteland
 
             //config.LoadData();
             
-            if (gameplayData == null)
-                gameplayData = new Gameplay.GameplayData();
+            if (GameData == null)
+                GameData = new Gameplay.GameData();
             
-            //gameplayData.LoadData();
+            GameData.LoadData();
         }
         
         //Editor Methods

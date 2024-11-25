@@ -12,6 +12,7 @@ namespace TheWasteland.Gameplay.Player
         List<BuffSO> rewardOptions;
         float playerXp;
         int playerLevels;
+        float xpModifier;
         PlayerController player;
         
         [Header("UI")]
@@ -29,13 +30,23 @@ namespace TheWasteland.Gameplay.Player
         }
 
         //Methods
-        public void Set(PlayerController player)
+        public void Set(PlayerController player, LevelSystemData data)
         {
             this.player = player;
+            
+            if(data == null) return;
+            
+            xpModifier = data.xpModifier;
+            
+            for (int i = 0; i < data.startingBuffs.Length; i++)
+                ApplyReward(data.startingBuffs[i]);
+            
+            for (int i = 0; i < data.startingLevel; i++)
+                LevelUpPlayer(true);
         }
         public bool TryLevelUp(int dataXpValue)
         {
-            playerXp += dataXpValue;
+            playerXp += dataXpValue * xpModifier;
 
             //If player has enough xp, level up
             if (playerXp < XpToLevelUp * (playerLevels + 1)) return false;
@@ -43,11 +54,14 @@ namespace TheWasteland.Gameplay.Player
             LevelUpPlayer();
             return true;
         }
-        void LevelUpPlayer()
+        void LevelUpPlayer(bool ignoreXP = false)
         {
             //Reset Xp and increase level
-            playerXp -= XpToLevelUp * playerLevels;
-            playerLevels++;
+            if (ignoreXP)
+            {
+                playerXp -= XpToLevelUp * playerLevels;
+                playerLevels++;
+            }
             
             //Set reward options UI
             rewardOptions.Clear();

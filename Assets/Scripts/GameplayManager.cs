@@ -40,7 +40,7 @@ namespace TheWasteland.Gameplay
             gameManager = GameManager.inst;
 
             levelManager = LevelManager.inst;
-            levelManager.Set(player);
+            levelManager.Set(player, gameManager.GameData.levelSystemData);
             
             enemyManager = Enemy.EnemyManager.inst;
             enemyManager.EnemyDied += (enemyData) => EarnXp(enemyData.xpValue);
