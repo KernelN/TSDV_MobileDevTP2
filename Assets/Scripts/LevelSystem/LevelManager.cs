@@ -38,11 +38,12 @@ namespace TheWasteland.Gameplay.Player
             
             xpModifier = data.xpModifier;
             
-            for (int i = 0; i < data.startingBuffs.Length; i++)
-                ApplyReward(data.startingBuffs[i]);
+            if(data.startingBuffs != null)
+                for (int i = 0; i < data.startingBuffs.Count; i++)
+                    ApplyReward(data.startingBuffs[i]);
             
             for (int i = 0; i < data.startingLevel; i++)
-                LevelUpPlayer(true);
+                LevelUpPlayer(false);
         }
         public bool TryLevelUp(int dataXpValue)
         {
@@ -54,10 +55,10 @@ namespace TheWasteland.Gameplay.Player
             LevelUpPlayer();
             return true;
         }
-        void LevelUpPlayer(bool ignoreXP = false)
+        void LevelUpPlayer(bool useXP = true)
         {
             //Reset Xp and increase level
-            if (ignoreXP)
+            if (useXP)
             {
                 playerXp -= XpToLevelUp * playerLevels;
                 playerLevels++;

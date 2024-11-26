@@ -1,12 +1,11 @@
 using System.Collections.Generic;
-using UnityEngine;
 using Universal.Singletons;
 
 namespace TheWasteland.EventManager
 {
     public class EventManager : MonoBehaviourSingletonInScene<EventManager>
     {
-        Dictionary<string, List<EventListener>> listeners;
+        Dictionary<string, List<IEventListener>> listeners;
         
         internal override void Awake()
         {
@@ -14,16 +13,16 @@ namespace TheWasteland.EventManager
             
             if(inst != this) return;
             
-            listeners = new Dictionary<string, List<EventListener>>();
+            listeners = new Dictionary<string, List<IEventListener>>();
         }
         
-        public void AddListener(string eventName, EventListener listener)
+        public void AddListener(string eventName, IEventListener listener)
         {
             if (!listeners.ContainsKey(eventName))
-                listeners.Add(eventName, new List<EventListener>());
+                listeners.Add(eventName, new List<IEventListener>());
             listeners[eventName].Add(listener);
         }
-        public void RemoveListener(string eventName, EventListener listener)
+        public void RemoveListener(string eventName, IEventListener listener)
         {
             if (listeners.ContainsKey(eventName))
                 listeners[eventName].Remove(listener);

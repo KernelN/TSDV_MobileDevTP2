@@ -84,6 +84,8 @@ namespace TheWasteland.Gameplay.Player
         public Stats GetStats(StatsSO so)
         {
             if (so is PlayerDataSO) return data;
+            
+            if(powers == null) return null;
 
             for (int i = 0; i < powers.Count; i++)
             {

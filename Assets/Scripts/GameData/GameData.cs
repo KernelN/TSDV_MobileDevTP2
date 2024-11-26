@@ -1,8 +1,8 @@
-using System.Collections.Generic;
 using Universal.FileManaging;
 
 namespace TheWasteland.Gameplay
 {
+    [System.Serializable]
     public class GameData
     {
         public int coins;
@@ -34,14 +34,21 @@ namespace TheWasteland.Gameplay
         {
             string path = UnityEngine.Application.persistentDataPath + dataPath;
             GameData data = FileManager<GameData>.LoadDataFromFile(path);
-            
-            if (data == null) return;
+
+            if (data == null)
+            {
+                FixNulls();
+                return;
+            }
             
             coins = data.coins;
             lastStageUnlocked = data.lastStageUnlocked;
             levelSystemData = data.levelSystemData;
             
             FixNulls();
+            
+            //Only get buffs after making sure level system data exists
+            levelSystemData.GetBuffsFromPaths();
         }
         void FixNulls()
         {

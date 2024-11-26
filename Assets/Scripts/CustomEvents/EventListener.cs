@@ -1,6 +1,6 @@
 namespace TheWasteland.EventManager
 {
-    public interface EventListener
+    public interface IEventListener
     {
         public void OnEventRaised(object[] data);
     }

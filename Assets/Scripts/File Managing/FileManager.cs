@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization.Formatters.Binary;
+﻿using System;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 namespace Universal.FileManaging
@@ -26,12 +27,19 @@ namespace Universal.FileManaging
                 return default;
             }
 
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(dataPath, FileMode.Open);
-            T objectToLoad = (T)bf.Deserialize(file);
-            file.Close();
+            try
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Open(dataPath, FileMode.Open);
+                T objectToLoad = (T)bf.Deserialize(file);
+                file.Close();
 
-            return objectToLoad;
+                return objectToLoad;
+            }
+            catch (Exception e)
+            {
+                return default;
+            }
         }
         public static void DeleteFile(string dataPath)
         {

@@ -73,13 +73,13 @@ namespace TheWasteland
         //Editor Methods
         public void ClearGData()
         {
-            // if(gameplayData != null)
-            //     gameplayData.Clean();
-            // else
-            // {
-            //     Gameplay.GameplayData gData = new Gameplay.GameplayData();
-            //     gData.Clean();
-            // }
+            if(GameData != null)
+                GameData.Clean();
+            else
+            {
+                Gameplay.GameData gData = new Gameplay.GameData();
+                gData.Clean();
+            }
         }
     }
 }

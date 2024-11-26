@@ -60,7 +60,7 @@ namespace TheWasteland.SceneManaging
             {
                 return "ERROR";
             }
-            return "Level_" + level;
+            return "Stage_" + level;
         }
     }
 }

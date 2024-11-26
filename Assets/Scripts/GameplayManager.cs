@@ -32,6 +32,8 @@ namespace TheWasteland.Gameplay
             player.Died += () =>
             {
                 Time.timeScale = 0;
+                gameManager.GameData.coins += coins;
+                gameManager.GameData.SaveData();
                 GameOver?.Invoke();
             };
         }
