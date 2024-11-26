@@ -16,5 +16,5 @@ MonoBehaviour:
   speed: 5
   attackCooldown: 1
   attackRange: 9
-  xpValue: 5
+  xpValue: 10
   attackDmg: 5
