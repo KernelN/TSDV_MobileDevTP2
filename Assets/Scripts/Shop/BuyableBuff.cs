@@ -61,7 +61,7 @@ namespace TheWasteland.Shop
             for (int i = 0; i < boughtBuffs.Count; i++)
             {
                 if(boughtBuffs[i].targetStats == buff.targetStats)
-                    switch (buff.type)
+                    switch (boughtBuffs[i].type)
                     {
                         case Gameplay.BuffSO.BuffType.Add:
                             stats.Add(boughtBuffs[i].buff);
