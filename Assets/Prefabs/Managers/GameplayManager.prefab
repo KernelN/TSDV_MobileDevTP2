@@ -63,6 +63,10 @@ MonoBehaviour:
   XpToLevelUp: 10
   rewards:
   - {fileID: 11400000, guid: 6e6530a6fe789414482b7ecb3c3233fc, type: 2}
-  - {fileID: 11400000, guid: 2c1362a2eb92b674396640426a425f68, type: 2}
   - {fileID: 11400000, guid: 38578267c4cf1df4982e96d15fafea13, type: 2}
+  - {fileID: 11400000, guid: 2c1362a2eb92b674396640426a425f68, type: 2}
+  - {fileID: 11400000, guid: 96dbcda2ed7d35c49b0f348710aee69b, type: 2}
+  - {fileID: 11400000, guid: 88b32d9a2b9f41044bfb22c604ee4058, type: 2}
+  - {fileID: 11400000, guid: 7fd7bfd7ace6b3f4cbdba98cbc5535f2, type: 2}
+  - {fileID: 11400000, guid: 0d652ddf59071ee48b0776029035da3e, type: 2}
   rewardScreens: []
