@@ -10,6 +10,7 @@ namespace TheWasteland.Gameplay
         [SerializeField] PlayerController player;
         [SerializeField] PlayerDataSO playerData; 
         [SerializeField] float timeToCompleteStage = 5*60;
+        [SerializeField, Min(1)] int stage = 1;
         //[Header("Runtime Values")]
         GameManager gameManager;
         LevelManager levelManager;
@@ -49,11 +50,27 @@ namespace TheWasteland.Gameplay
         }
         void Update()
         {
+            bool wasStageComplete = StageComplete;
             timer += Time.deltaTime;
             if (StageComplete)
             {
                 int minutesPostComplete = (int)((timer - timeToCompleteStage) % 60);
                 enemyManager.SetSpawnMultiplier(minutesPostComplete*2);
+
+                //If game reached end of stage, add coins, just in case player is too OP
+                if (!wasStageComplete)
+                {
+                    //If player unlocked a new stage Update Stage
+                    if(stage > gameManager.GameData.lastStageUnlocked)
+                        gameManager.GameData.lastStageUnlocked = stage;
+                    
+                    //Update Coins & reset them
+                    gameManager.GameData.coins += coins;
+                    coins = 0;
+                    
+                    //Save
+                    gameManager.GameData.SaveData();
+                }
             }
         }
 

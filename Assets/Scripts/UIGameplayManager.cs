@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace TheWasteland.Gameplay
@@ -30,12 +31,12 @@ namespace TheWasteland.Gameplay
             Player.LevelManager lvlManager = Player.LevelManager.inst;
             lvlManager.LeveledUp += () =>
             {
-                inGameScreen.SetActive(false);
+                StartCoroutine(UpdateInGameScreen(false));
                 levelUpScreen.SetActive(true);
             };
             lvlManager.RewardSelected += () =>
             {
-                inGameScreen.SetActive(true);
+                StartCoroutine(UpdateInGameScreen(true));
                 levelUpScreen.SetActive(false);
             };
         }
@@ -46,6 +47,11 @@ namespace TheWasteland.Gameplay
             isPaused = !isPaused;
             gameManager.SetPause(isPaused);
             pauseScreen.SetActive(isPaused);
+        }
+        IEnumerator UpdateInGameScreen(bool show)
+        {
+            yield return new WaitForEndOfFrame();
+            inGameScreen.SetActive(show);
         }
     }
 }
