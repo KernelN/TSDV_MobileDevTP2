@@ -533,3 +533,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 95457531584545886}
+  invulnerableTime: 0.85
