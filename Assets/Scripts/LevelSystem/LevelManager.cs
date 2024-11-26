@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Universal.Singletons;
@@ -22,8 +23,9 @@ namespace TheWasteland.Gameplay.Player
         public System.Action RewardSelected;
         
         //Unity Events
-        void Start()
+        internal override void Awake()
         {
+            base.Awake();
             rewardOptions = new List<BuffSO>(rewards);
             for (int i = 0; i < rewardScreens.Length; i++)
                 rewardScreens[i].RewardSelected += ApplyReward;
@@ -41,9 +43,7 @@ namespace TheWasteland.Gameplay.Player
             if(data.startingBuffs != null)
                 for (int i = 0; i < data.startingBuffs.Count; i++)
                     ApplyReward(data.startingBuffs[i]);
-            
-            for (int i = 0; i < data.startingLevel; i++)
-                LevelUpPlayer(false);
+            StartCoroutine(StarUpLevelUp(data.startingLevel));
         }
         public bool TryLevelUp(int dataXpValue)
         {
@@ -123,6 +123,15 @@ namespace TheWasteland.Gameplay.Player
             player.ReSet();
             GameManager.inst.SetPause(false);
             RewardSelected?.Invoke();
+        }
+        IEnumerator StarUpLevelUp(int startingLevel)
+        {
+            yield return new WaitForEndOfFrame();
+            for (int i = 0; i < startingLevel; i++)
+            {
+                while (Time.timeScale == 0) yield return null;
+                LevelUpPlayer(false);
+            }
         }
     }
 }
