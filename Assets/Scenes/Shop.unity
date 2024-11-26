@@ -135,26 +135,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 828442548}
     m_Modifications:
-    - target: {fileID: 434573384184094269, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 177286894}
-    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Buy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TheWasteland.Shop.BuyableUI, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6368090672095056592, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 889973404088547020, guid: 6120157e1553c37419f9b99e8197bb81, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -250,6 +230,26 @@ PrefabInstance:
     - target: {fileID: 8722848272788653426, guid: 6120157e1553c37419f9b99e8197bb81, type: 3}
       propertyPath: m_Name
       value: BuyPowerUp - Panel (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 434573384184094269, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 177286894}
+    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TheWasteland.Shop.BuyableUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368090672095056592, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -767,26 +767,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 828442548}
     m_Modifications:
-    - target: {fileID: 434573384184094269, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1059287032}
-    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Buy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TheWasteland.Shop.BuyableUI, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6368090672095056592, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 889973404088547020, guid: 6120157e1553c37419f9b99e8197bb81, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -883,6 +863,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuyPowerUp - Panel (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 434573384184094269, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1059287032}
+    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TheWasteland.Shop.BuyableUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368090672095056592, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -938,7 +938,7 @@ MonoBehaviour:
   titleText: {fileID: 1059287033}
   rewardText: {fileID: 1059287030}
   costText: {fileID: 1059287029}
-  coinCost: 10
+  coinCost: 7
   buff: {fileID: 11400000, guid: 6b2ff2bb3d1c23949be153a4ac34d68a, type: 2}
 --- !u!114 &1059287033 stripped
 MonoBehaviour:
@@ -959,18 +959,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 828442548}
     m_Modifications:
-    - target: {fileID: 2999613262110545083, guid: b4fec7189bcc9984c9cf16fa462bd368, type: 3}
-      propertyPath: scene
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3755213935343045026, guid: b4fec7189bcc9984c9cf16fa462bd368, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 974372961}
-    - target: {fileID: 4230672802943258919, guid: b4fec7189bcc9984c9cf16fa462bd368, type: 3}
-      propertyPath: m_text
-      value: Back
-      objectReference: {fileID: 0}
     - target: {fileID: 2999613262110545083, guid: 16cf1d69f883a184c931d0fed4d68bbe, type: 3}
       propertyPath: scene
       value: 1
@@ -1070,6 +1058,18 @@ PrefabInstance:
     - target: {fileID: 4898138346965701644, guid: 16cf1d69f883a184c931d0fed4d68bbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999613262110545083, guid: b4fec7189bcc9984c9cf16fa462bd368, type: 3}
+      propertyPath: scene
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3755213935343045026, guid: b4fec7189bcc9984c9cf16fa462bd368, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 974372961}
+    - target: {fileID: 4230672802943258919, guid: b4fec7189bcc9984c9cf16fa462bd368, type: 3}
+      propertyPath: m_text
+      value: Back
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1343,26 +1343,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 828442548}
     m_Modifications:
-    - target: {fileID: 434573384184094269, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1713249153}
-    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Buy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TheWasteland.Shop.BuyableUI, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6368090672095056592, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 889973404088547020, guid: 6120157e1553c37419f9b99e8197bb81, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1459,6 +1439,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuyPowerUp - Panel (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 434573384184094269, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1713249153}
+    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TheWasteland.Shop.BuyableUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368090672095056592, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1514,7 +1514,7 @@ MonoBehaviour:
   titleText: {fileID: 1713249154}
   rewardText: {fileID: 1713249151}
   costText: {fileID: 1713249150}
-  coinCost: 5
+  coinCost: 8
   type: 1
   modifier: 1
 --- !u!114 &1713249154 stripped
@@ -1627,26 +1627,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 828442548}
     m_Modifications:
-    - target: {fileID: 434573384184094269, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6519311165368206550}
-    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Buy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TheWasteland.Shop.BuyableUI, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6368090672095056592, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 889973404088547020, guid: 6120157e1553c37419f9b99e8197bb81, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1742,6 +1722,26 @@ PrefabInstance:
     - target: {fileID: 8722848272788653426, guid: 6120157e1553c37419f9b99e8197bb81, type: 3}
       propertyPath: m_Name
       value: BuyPowerUp - Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 434573384184094269, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6519311165368206550}
+    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772356889448990824, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TheWasteland.Shop.BuyableUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368090672095056592, guid: 0ab0dda7a70436143b8e50eb229fc8c4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
