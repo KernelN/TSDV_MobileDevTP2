@@ -275,7 +275,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2e3e80685a8bf6346b3cab9d664d1f9a, type: 2}
+  - {fileID: 2100000, guid: 7a117517e7475854b9ff2a40edc2840b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -426,9 +426,9 @@ GameObject:
   - component: {fileID: 95457531584545886}
   - component: {fileID: -7894101945401084629}
   - component: {fileID: 5211720775833704626}
-  - component: {fileID: -3380721636799213333}
+  - component: {fileID: -425192117623516046}
   m_Layer: 7
-  m_Name: RangeSlime
+  m_Name: WeakMeleeSlime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,7 +520,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &-3380721636799213333
+--- !u!114 &-425192117623516046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -529,7 +529,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1931298151966786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 397fa7237959cbf4fb828de01d1cd9e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 6aa5bc9dd927c2f45a7d7fe12022e497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 95457531584545886}
