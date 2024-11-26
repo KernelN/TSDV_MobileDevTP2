@@ -28,7 +28,7 @@ namespace TheWasteland.Gameplay.Enemy
             if (sqrDist > SqrAttkRange) return;
             
             atkTimer = data.attackCooldown;
-            targetHittable.GetHitted(mData.attackDmg);
+            targetHittable.GetHitted(mData.attackDmg, transform);
             animator.SetTrigger(OnMeleeAttack);
         }
 

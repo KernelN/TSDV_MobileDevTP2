@@ -7,9 +7,9 @@ namespace TheWasteland.Gameplay.Powers
         MeleeData data;
 
         //Methods
-        public override void Set(PowerData powerData)
+        public override void Set(PowerData powerData, Transform transform)
         {
-            base.Set(powerData);
+            base.Set(powerData, transform);
             data = powerData as MeleeData;
         }
         public override void Cast(Transform caster)

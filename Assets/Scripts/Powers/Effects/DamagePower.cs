@@ -17,8 +17,10 @@ namespace TheWasteland.Gameplay.Powers
 
         //Methods
         public DamagePower(PowerComponent component) : base(component) { }
-        public override void Set(PowerData powerData)
+        public override void Set(PowerData powerData, Transform transform)
         {
+            base.Set(powerData, transform);
+            
             data = powerData as DamageData;
             hasLoops = data.dmgLoops > 0;
             
@@ -50,7 +52,7 @@ namespace TheWasteland.Gameplay.Powers
                     }
 
                     //Hit target and increase counter by 1
-                    targets[i].GetHitted(data.dmg);
+                    targets[i].GetHitted(data.dmg, transform);
                     targetHits[i]++;   
                     
                     //If target has been hit enough times (with dmg over time), remove it
@@ -66,7 +68,8 @@ namespace TheWasteland.Gameplay.Powers
         {
             if (!target.TryGetComponent(out IHittable hit)) return;
             
-            hit.GetHitted(data.dmg);
+            if(transform)
+                hit.GetHitted(data.dmg, transform);
 
             if (!hasLoops) return;
             timer = data.castCooldown;

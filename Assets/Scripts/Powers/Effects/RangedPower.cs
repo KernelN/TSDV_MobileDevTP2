@@ -10,9 +10,9 @@ namespace TheWasteland.Gameplay.Powers
         float tickMoveMag;
         
         //Methods
-        public override void Set(PowerData powerData)
+        public override void Set(PowerData powerData, Transform transform)
         {
-            base.Set(powerData);
+            base.Set(powerData, transform);
             data = powerData as RangedData;
         }
         public override void Update(float dt)

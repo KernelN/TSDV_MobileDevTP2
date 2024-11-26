@@ -25,7 +25,7 @@ namespace TheWasteland.Gameplay.Player
         {
             input = InputManager.inst;
             powers = new List<Powers.PowerComponent>();
-            powers.Add(powerSetter.AssemblePower());
+            powers.Add(powerSetter.AssemblePower(transform));
             powers[0].Cast(transform);
         }
         void Update()
@@ -65,7 +65,7 @@ namespace TheWasteland.Gameplay.Player
         }
 
         //Methods
-        public void GetHitted(float dmg)
+        public void GetHitted(float dmg, Transform hitter)
         {
             if(invulnerableTimer > 0) return;
             cHealth -= dmg;
@@ -98,7 +98,8 @@ namespace TheWasteland.Gameplay.Player
         public void AddPower(StatsSO buffTargetStats)
         {
             int newPowerIndex = powers.Count;
-            powers.Add(powerSetter.AssemblePower((Powers.PowerDataSO)buffTargetStats));
+            powers.Add(powerSetter.AssemblePower(transform,
+                                                    (Powers.PowerDataSO)buffTargetStats));
             powers[newPowerIndex].Cast(transform);
         }
     }

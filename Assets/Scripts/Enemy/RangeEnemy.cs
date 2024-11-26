@@ -17,8 +17,10 @@ namespace TheWasteland.Gameplay.Enemy
         static readonly int OnAttack = Animator.StringToHash("OnRangedAttack");
 
         //Unity Events
-        void Start()
+        protected override void Start()
         {
+            base.Start();
+            
             projectiles = new List<Transform>();
             projectilesLife = new List<float>();
         }

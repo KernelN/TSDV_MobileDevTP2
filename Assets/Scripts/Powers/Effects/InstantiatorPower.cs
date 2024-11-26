@@ -11,11 +11,12 @@ namespace TheWasteland.Gameplay.Powers
         internal float cooldown;
         InstantiatorData data;
 
-        public virtual void Set(PowerData powerData)
+        public virtual void Set(PowerData powerData, Transform transform)
         {
             data = powerData as InstantiatorData;
             projectiles = new List<Transform>();
             projectilesLife = new List<float>();
+            caster = transform;
         }
         public virtual void Update(float dt)
         {
@@ -44,8 +45,6 @@ namespace TheWasteland.Gameplay.Powers
         public virtual void Cast(Transform caster)
         {
             if(cooldown > 0) return;
-            
-            this.caster = caster;
             
             Vector3 dir;
 

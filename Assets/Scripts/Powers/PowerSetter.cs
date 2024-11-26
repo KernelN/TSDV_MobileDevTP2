@@ -7,23 +7,23 @@ namespace TheWasteland.Gameplay.Powers
     {
         [SerializeField] PowerDataSO[] effectsInOrder;
         
-        public PowerComponent AssemblePower()
+        public PowerComponent AssemblePower(Transform transform)
         {
             //Instantiate last effect
-            PowerComponent power = CreateEffect(effectsInOrder[^1]);
+            PowerComponent power = CreateEffect(transform, effectsInOrder[^1]);
             
             for (int i = effectsInOrder.Length-2; i >= 0; i--)
             {
                 //Instantiate each effect, using previous as decorator  
-                power = CreateEffect(effectsInOrder[i], power);
+                power = CreateEffect(transform, effectsInOrder[i], power);
             }
 
             return power;
         }
-        public PowerComponent AssemblePower(PowerDataSO newEffect)
+        public PowerComponent AssemblePower(Transform transform, PowerDataSO newEffect)
         {
             //Instantiate last effect
-            PowerComponent power = CreateEffect(newEffect);
+            PowerComponent power = CreateEffect(transform, newEffect);
             
             // for (int i = effectsInOrder.Length-2; i >= 0; i--)
             // {
@@ -33,7 +33,8 @@ namespace TheWasteland.Gameplay.Powers
 
             return power;
         }
-        PowerComponent CreateEffect(PowerDataSO data, PowerComponent wrappee = null)
+        PowerComponent CreateEffect(Transform transform, PowerDataSO data, 
+                                                PowerComponent wrappee = null)
         {
             if (data == null) return null;
 
@@ -55,7 +56,7 @@ namespace TheWasteland.Gameplay.Powers
                 default: return null;
             }
             
-            newPower.Set(data.CreateInstance());
+            newPower.Set(data.CreateInstance(), transform);
             return newPower;
         }
         public void DrawGizmos(Transform t)

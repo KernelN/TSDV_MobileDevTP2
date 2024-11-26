@@ -4,7 +4,7 @@ namespace TheWasteland.Gameplay.Powers
 {
     public interface PowerComponent
     {
-        public void Set(PowerData powerData);
+        public void Set(PowerData powerData, Transform transform);
         public void Update(float dt);
 
         public void Cast(Transform target);

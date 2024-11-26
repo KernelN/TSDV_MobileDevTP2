@@ -15,7 +15,7 @@ namespace TheWasteland.Gameplay.Powers
         void Start()
         {
             //Cast power as soon as it has been setted
-            power = setter.AssemblePower();
+            power = setter.AssemblePower(transform);
             power.Cast(transform);
         }
         void Update()

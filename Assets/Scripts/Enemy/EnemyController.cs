@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace TheWasteland.Gameplay.Enemy
@@ -12,17 +13,33 @@ namespace TheWasteland.Gameplay.Enemy
         internal Transform target;
         internal EnemyDataSO data;
         internal float cHealth;
-        float invulnerableTimer;
+        List<int> hitterHashes;
+        List<float> invulnerableTimers;
 
         public System.Action Died;
         
         internal float SqrAttkRange => data.attackRange * data.attackRange;
 
         //Unity Events
+        protected virtual void Start()
+        {
+            hitterHashes = new List<int>();
+            invulnerableTimers = new List<float>();
+        }
         protected virtual void Update()
         {
             chaseModule.Update();
-            if (invulnerableTimer > 0) invulnerableTimer -= Time.deltaTime;
+
+            float dt = Time.deltaTime;
+            for (int i = 0; i < invulnerableTimers.Count; i++)
+            {
+                invulnerableTimers[i] -= dt;
+                if (invulnerableTimers[i] <= 0)
+                {
+                    hitterHashes.RemoveAt(i);
+                    invulnerableTimers.RemoveAt(i);
+                }
+            }
         }
 
         //Methods
@@ -35,15 +52,20 @@ namespace TheWasteland.Gameplay.Enemy
 
             this.chaseModule = chaseModule;
         }
-        public void GetHitted(float dmg)
+        public void GetHitted(float dmg, Transform hitter)
         {
-            if (invulnerableTimer > 0) return;
-            invulnerableTimer = invulnerableTime;
+            if (hitterHashes.Contains(hitter.GetHashCode())) return;
+            
             cHealth -= dmg;
             if (cHealth <= 0)
             {
                 Died?.Invoke();
                 Destroy(gameObject);
+            }
+            else
+            {
+                hitterHashes.Add(hitter.GetHashCode());
+                invulnerableTimers.Add(invulnerableTime);
             }
         }
     }

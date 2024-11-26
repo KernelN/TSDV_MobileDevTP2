@@ -11,7 +11,6 @@ namespace TheWasteland.Gameplay.Powers
         //[Header("Set Values")]
         //[Header("Runtime Values")]
         RadialHitData data;
-        Transform t;
         float cooldown;
         bool stopsByHit;
         int hitsToStop;
@@ -20,8 +19,10 @@ namespace TheWasteland.Gameplay.Powers
 
         //Methods
         public RadialHitPower(PowerComponent component) : base(component) { }
-        public override void Set(PowerData powerData)
+        public override void Set(PowerData powerData, Transform transform)
         {
+            base.Set(powerData, transform);
+            
             data = powerData as RadialHitData;
             stopsByHit = data.hitsToStop >= 0;
             hitsToStop = data.hitsToStop;
@@ -37,7 +38,8 @@ namespace TheWasteland.Gameplay.Powers
             }
             
             Collider[] hits;
-            hits = Physics.OverlapSphere(t.position, data.hitRadius, data.targetLayers);
+            hits = Physics.OverlapSphere(transform.position, data.hitRadius,
+                                                                data.targetLayers);
 
             for (int i = 0; i < hits.Length; i++)
             {
@@ -47,14 +49,11 @@ namespace TheWasteland.Gameplay.Powers
                 if (!stopsByHit) continue;
                 hitsToStop--;
                 if (hitsToStop >= 0) continue;
-                Object.Destroy(t.gameObject);
+                Object.Destroy(transform.gameObject);
                 return;
             }
         }
-        public override void Cast(Transform target)
-        {
-            t = target;
-        }
+        public override void Cast(Transform target) {} //it autocasts
         public override bool GetStats(StatsSO so, out Stats stats)
         {
             stats = null;
