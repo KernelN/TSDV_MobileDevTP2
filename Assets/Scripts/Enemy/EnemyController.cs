@@ -6,11 +6,13 @@ namespace TheWasteland.Gameplay.Enemy
     {
         //[Header("Set Values")]
         [SerializeField] internal Animator animator;
+        [SerializeField] internal float invulnerableTime = 1;
         //[Header("Runtime Values")]
         ChaseModule chaseModule;
         internal Transform target;
         internal EnemyDataSO data;
         internal float cHealth;
+        float invulnerableTimer;
 
         public System.Action Died;
         
@@ -20,6 +22,7 @@ namespace TheWasteland.Gameplay.Enemy
         protected virtual void Update()
         {
             chaseModule.Update();
+            if (invulnerableTimer > 0) invulnerableTimer -= Time.deltaTime;
         }
 
         //Methods
@@ -34,6 +37,8 @@ namespace TheWasteland.Gameplay.Enemy
         }
         public void GetHitted(float dmg)
         {
+            if (invulnerableTimer > 0) return;
+            invulnerableTimer = invulnerableTime;
             cHealth -= dmg;
             if (cHealth <= 0)
             {

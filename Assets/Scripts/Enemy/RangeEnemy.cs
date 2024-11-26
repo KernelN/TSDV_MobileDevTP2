@@ -69,8 +69,9 @@ namespace TheWasteland.Gameplay.Enemy
         void OnDestroy()
         {
             //Clear all projectiles on defeat
-            while(projectiles.Count > 0)
-                DestroyProj(0);
+            if(projectiles != null)
+                while(projectiles.Count > 0) 
+                    DestroyProj(0);
         }
 
         //Methods
