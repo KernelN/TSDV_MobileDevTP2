@@ -14,12 +14,12 @@ namespace TheWasteland.SocialNet
         //Unity Events
         void Start()
         {
+#if UNITY_EDITOR || PLATFORM_STANDALONE
+            return;
+#endif
 #if UNITY_ANDROID || PLATFORM_ANDROID
             if (platform == null)
             {
-                // //NOT SUPPORTED ANYMORE
-                // PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
-                // PlayGamesPlatform.InitializeInstance(config);
                 PlayGamesPlatform.DebugLogEnabled = true;
                 platform = PlayGamesPlatform.Activate();
                 Debug.Log("GPGS - Play Games activated successfully");
@@ -36,6 +36,9 @@ namespace TheWasteland.SocialNet
         //Methods
         public void LogIn(bool logInFromPlatform = false)
         {
+#if UNITY_EDITOR || PLATFORM_STANDALONE
+            return;
+#endif
             if (logInFromPlatform)
             {
 #if UNITY_ANDROID || PLATFORM_ANDROID
@@ -47,6 +50,9 @@ namespace TheWasteland.SocialNet
         }
         public void AddScoreToLeaderboard(int score)
         {
+#if UNITY_EDITOR || PLATFORM_STANDALONE
+            return;
+#endif
             if (score % 5 != 0)
             {
                 Debug.Log("GameSocials ERROR - Score must be a multiple of 5");
@@ -59,20 +65,33 @@ namespace TheWasteland.SocialNet
         }
         public void ShowLeaderboard()
         {
+#if UNITY_EDITOR || PLATFORM_STANDALONE
+            return;
+#endif
             if (Social.localUser.authenticated)
             {
+#if UNITY_ANDROID || PLATFORM_ANDROID
                 platform.ShowLeaderboardUI();
+#endif
             }
         }
         public void ShowAchievements()
         {
+#if UNITY_EDITOR || PLATFORM_STANDALONE
+            return;
+#endif
             if (Social.localUser.authenticated)
             {
+#if UNITY_ANDROID || PLATFORM_ANDROID
                 platform.ShowAchievementsUI();
+#endif
             }
         }
         public void UnlockAchievement(string id, bool unlockFromPlatform = false)
         {
+#if UNITY_EDITOR || PLATFORM_STANDALONE
+            return;
+#endif
             if (unlockFromPlatform)
             {
 #if UNITY_ANDROID || PLATFORM_ANDROID
@@ -89,6 +108,9 @@ namespace TheWasteland.SocialNet
         }
         void OnUnityLogIn(bool success)
         {
+#if UNITY_EDITOR || PLATFORM_STANDALONE
+            return;
+#endif
             if (success)
             {
                 Debug.Log("GameSocials - Logged in successfully");
