@@ -10,6 +10,7 @@ namespace TheWasteland.Gameplay
         [SerializeField] GameObject levelUpScreen;
         [SerializeField] GameObject pauseScreen;
         [SerializeField] GameObject gameOverScreen;
+        [SerializeField] GameObject stageCompleteText;
         //[Header("Runtime Values")]
         GameManager gameManager;
         GameplayManager manager;
@@ -24,6 +25,10 @@ namespace TheWasteland.Gameplay
             manager.GameOver += () =>
             {
                 Time.timeScale = 0;
+                
+                if(manager.StageComplete)
+                    stageCompleteText.SetActive(true);
+                
                 gameOverScreen.SetActive(true);
                 inGameScreen.SetActive(false);
             };
