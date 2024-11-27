@@ -24,6 +24,10 @@ namespace TheWasteland.Plugins
         //Unity Events
         void Awake()
         {
+#if UNITY_EDITOR
+            Destroy(this);
+            return;
+#endif
 #if UNITY_ANDROID || PLATFORM_ANDROID
             pluginClass = new AndroidJavaClass(pluginClassName);
             pluginInst = pluginClass.CallStatic<AndroidJavaObject>("getInstance");
