@@ -1,8 +1,9 @@
 using UnityEngine;
+using Universal.Singletons;
 
 namespace TheWasteland.Plugins
 {
-    public class LoggerPlugin : MonoBehaviour
+    public class LoggerPlugin : MonoBehaviourSingleton<LoggerPlugin>
     {
         //Plugin:
         //Con un boton muestra los logs
@@ -10,7 +11,6 @@ namespace TheWasteland.Plugins
         //Con otro los borra
         
         //[Header("Set Values")]
-        [SerializeField] TMPro.TextMeshProUGUI label;
         //[Header("Runtime Values")]
 
         const string pluginPackName = "com.insaustialejandro.logger";
@@ -24,8 +24,6 @@ namespace TheWasteland.Plugins
         //Unity Events
         void Awake()
         {
-            label.text = "Start";
-
 #if UNITY_ANDROID || PLATFORM_ANDROID
             pluginClass = new AndroidJavaClass(pluginClassName);
             pluginInst = pluginClass.CallStatic<AndroidJavaObject>("getInstance");
@@ -55,13 +53,13 @@ namespace TheWasteland.Plugins
             pluginInst.Call("SendLog", log);
 #endif
         }
-        public void GetLogs()
+        public string GetLogs()
         {
 #if UNITY_ANDROID || PLATFORM_ANDROID
             if (pluginInst != null)
-                label.text = pluginInst.Call<string>("GetLogs");
+                return pluginInst.Call<string>("GetLogs");
             else
-                label.text = "Plugin not found";
+                return "Plugin not found";
 #endif
         }
         public void ReadLogs()

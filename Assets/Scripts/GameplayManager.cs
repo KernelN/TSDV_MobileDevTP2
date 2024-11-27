@@ -26,6 +26,7 @@ namespace TheWasteland.Gameplay
         void Awake()
         {
             base.Awake();
+            Debug.Log("GameStarted");
             
             if(!player)
                 player = FindObjectOfType<PlayerController>();
@@ -35,6 +36,7 @@ namespace TheWasteland.Gameplay
                 Time.timeScale = 0;
                 gameManager.GameData.coins += coins;
                 gameManager.GameData.SaveData();
+                Debug.Log("GameOver");
                 GameOver?.Invoke();
             };
         }
@@ -60,6 +62,7 @@ namespace TheWasteland.Gameplay
                 //If game reached end of stage, add coins, just in case player is too OP
                 if (!wasStageComplete)
                 {
+                    Debug.Log("Stage Complete: " + stage);
                     //If player unlocked a new stage Update Stage
                     if(stage > gameManager.GameData.lastStageUnlocked)
                         gameManager.GameData.lastStageUnlocked = stage;
