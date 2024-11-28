@@ -20,9 +20,10 @@ namespace TheWasteland.Gameplay
         }
         public void GetBuffsFromPaths()
         {
+            startingBuffs = new List<BuffSO>();
+
             if (buffsPaths == null) return;
             
-            startingBuffs = new List<BuffSO>();
             System.Type type = typeof(BuffSO);
             for (int i = 0; i < buffsPaths.Length; i++)
                 startingBuffs.Add(UnityEngine.Resources.Load(buffsPaths[i]) as BuffSO);
