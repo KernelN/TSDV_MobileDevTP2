@@ -19,3 +19,6 @@ EventManager
 --Scripts/Shop/
 ShopManager (as client and EventListener child)
 BuyableUI (and all it's children) (as client and EventListener child
+
+# Logger Plugin Used:
+https://github.com/KernelN/TSDV_MobilePlugins
