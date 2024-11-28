@@ -2065,6 +2065,10 @@ PrefabInstance:
       value: Gameplay Manager
       objectReference: {fileID: 0}
     - target: {fileID: 5919569680023558658, guid: baa57206fb3f31f4e8a721a6d7ad78e2, type: 3}
+      propertyPath: stage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919569680023558658, guid: baa57206fb3f31f4e8a721a6d7ad78e2, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1715516469}
