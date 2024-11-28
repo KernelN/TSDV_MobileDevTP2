@@ -65,6 +65,7 @@ namespace TheWasteland.Plugins
             else
                 return "Plugin not found";
 #endif
+            return "Plugin not available";
         }
         public void ReadLogs()
         {
