@@ -55,6 +55,7 @@ namespace TheWasteland.Gameplay.Enemy
         public void GetHitted(float dmg, Transform hitter)
         {
             if(hitter == null) return;
+            if(hitterHashes == null) return;
             if (hitterHashes.Contains(hitter.GetHashCode())) return;
             
             cHealth -= dmg;
