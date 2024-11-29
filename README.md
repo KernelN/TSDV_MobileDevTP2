@@ -1,4 +1,4 @@
-# TSDV_MobileDevTP2 / TheWasteland
+TheWasteland
 A Vampire Survivors inspired game where the main gimmick is that the player moves rotating the phone.
 
 # Design Patterns Used
