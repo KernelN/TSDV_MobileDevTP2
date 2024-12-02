@@ -22,12 +22,16 @@ namespace TheWasteland.Plugins
 #endif
         
         //Unity Events
-        void Awake()
+        internal override void Awake()
         {
-#if UNITY_EDITOR
-            Destroy(this);
-            return;
-#endif
+            if (Application.isEditor)
+            {
+                Destroy(this);
+                return;
+            }
+            
+            base.Awake();
+
 #if UNITY_ANDROID || PLATFORM_ANDROID
             pluginClass = new AndroidJavaClass(pluginClassName);
             pluginInst = pluginClass.CallStatic<AndroidJavaObject>("getInstance");
@@ -71,7 +75,6 @@ namespace TheWasteland.Plugins
         {
 #if UNITY_ANDROID || PLATFORM_ANDROID
             pluginInst.Call("ReadLogs");
-            GetLogs();
 #endif
         }
         public void ClearLogs()

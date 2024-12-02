@@ -28,7 +28,12 @@ namespace TheWasteland.Plugins
         public void RegisterTimeLog() => logger.RegisterTimeLog();
         public void RegisterLog(string log) => logger.RegisterLog(log); 
         public void GetLogs() => label.text = logger.GetLogs(); 
-        public void ReadLogs() => logger.ReadLogs(); 
+        public void ReadLogs()
+        {
+            logger.ReadLogs();
+            GetLogs();
+        }
+
         public void ClearLogs() => logger.ClearLogs(); 
     }
 }
